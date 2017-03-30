@@ -34,15 +34,9 @@ namespace WordpressMagicBoilerplate\Widgets {
 
 
 		public function form( $instance ) {
-
+			echo '<p class="no-options-widget">' . __('There are no options for this widget.') . '</p>';
+			return 'noform';
 		}
-
-		public function update( $new_instance, $old_instance ) {
-			$instance = array();
-
-			return $instance;
-		}
-
 
 	}
 }

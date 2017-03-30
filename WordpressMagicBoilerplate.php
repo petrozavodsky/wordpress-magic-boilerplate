@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Wordpress Magic Boilerplate Plugin
+Plugin Name: Worgit in
 Plugin URI: http://alkoweb.ru
 Author: Petrozavodsky
 Author URI: http://alkoweb.ru

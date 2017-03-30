@@ -1,5 +1,5 @@
 
-###ru###
+##RU
 
 Wordpress Magic Boilerplate
 ===================

@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: ShkafyDivany Related Widgets
+Plugin Name: Wordpress Magic Boilerplate Plugin
 Plugin URI: http://alkoweb.ru
 Author: Petrozavodsky
 Author URI: http://alkoweb.ru
@@ -13,7 +13,7 @@ require_once( "includes/Wrap.php" );
 use WordpressMagicBoilerplate\Wrap;
 
 class WordpressMagicBoilerplate extends Wrap {
-	public $version = '1.0.0';
+	public $version = '1.0.0-rc.';
 	public $path;
 	public $url;
 

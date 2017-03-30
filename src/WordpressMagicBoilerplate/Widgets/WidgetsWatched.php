@@ -38,5 +38,9 @@ namespace WordpressMagicBoilerplate\Widgets {
 			return 'noform';
 		}
 
+		public function update( $new_instance, $old_instance ) {
+			return $new_instance;
+		}
+
 	}
 }

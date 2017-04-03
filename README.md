@@ -1,5 +1,5 @@
 
-#Wordpress Magic Boilerplate [![built with gulp](public/images/gulp-badge.png)](http://gulpjs.com) 
+#Wordpress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)[![built with gulp](public/images/gulp-badge.png)](http://gulpjs.com) 
 =======================
 
 **#RU**

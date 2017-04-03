@@ -22,7 +22,7 @@ namespace WordpressMagicBoilerplate\Classes {
 			$this->file      = $state->file;
 
 			add_action( "get_header", array( $this, "router" ) );
-			$r = $this->addCss( 'MyClassStyle', 'wp_footer' );
+			$this->addCss( 'MyClassStyle', 'wp_footer' );
 		}
 
 		public function router() {

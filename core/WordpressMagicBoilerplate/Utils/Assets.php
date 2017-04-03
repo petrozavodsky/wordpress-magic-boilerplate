@@ -54,7 +54,6 @@ trait Assets {
 	 * @return string
 	 */
 	public function addJs( $handle, $position = "wp_enqueue_scripts", $dep = array(), $version = false, $src = false ) {
-		$handle    = $this->registerJs( $handle, $position, $dep, $version, $src );
 		$in_footer = false;
 		if ( $position == "footer" || $position == "body" ) {
 			$position  = "wp_footer";
@@ -62,6 +61,8 @@ trait Assets {
 		} elseif ( $position == "head" || $position == "wp_enqueue_script" || $position == "head" ) {
 			$position = "wp_head";
 		}
+
+		$handle    = $this->registerJs( $handle, $position, $dep, $version, $src );
 		add_action( $position, function () use ( $in_footer, $handle, $src, $dep, $version ) {
 			wp_enqueue_script( $handle, $src, $dep, $version, $in_footer );
 		} );
@@ -115,8 +116,9 @@ trait Assets {
 		} elseif ( $position == "header" || $position == "wp_enqueue_script" || $position == "head" ) {
 			$position = "wp_enqueue_scripts";
 		}
+
+		$handle = $this->registerCss( $handle, $dep, $version, $src, $media );
 		add_action( $position, function () use ( $media, $handle, $dep, $version, $src ) {
-			$handle = $this->registerCss( $handle, $dep, $version, $src, $media );
 			wp_enqueue_style( $handle );
 		} );
 

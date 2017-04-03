@@ -1,5 +1,5 @@
 **#RU**
-Wordpress Magic Boilerplate
+#Wordpress Magic Boilerplate [![built with gulp](public/images/gulp-badge.png)](http://gulpjs.com) 
 =======================
 **WordPress Плагин**
 

@@ -1,7 +1,9 @@
-**#RU**
-=======================
+
 #Wordpress Magic Boilerplate [![built with gulp](public/images/gulp-badge.png)](http://gulpjs.com) 
 =======================
+
+**#RU**
+
 **WordPress Плагин**
 
 Скелет плагина призванный привнести в ваш код WordPress код много срытой магии.

@@ -20,3 +20,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/sonarlint
+/node_modules/

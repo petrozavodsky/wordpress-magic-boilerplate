@@ -14,6 +14,7 @@ trait Assets {
 		'css_patch' => "public/css/",
 		'js_patch'  => "public/js/",
 		'version'   => "1.0.0",
+		'min'       => true
 	);
 
 	public function __get( $name ) {
@@ -31,8 +32,9 @@ trait Assets {
 	}
 
 	public function basename_helper() {
-		$array  = explode( '\\', __NAMESPACE__ );
-		$id   = array_shift( $array );
+		$array = explode( '\\', __NAMESPACE__ );
+		$id    = array_shift( $array );
+
 		return $id;
 	}
 
@@ -76,7 +78,11 @@ trait Assets {
 	public function registerJs( $handle, $in_footer = false, $dep = array(), $version = false, $src = false ) {
 		$this->basename_helper();
 		if ( ! $src ) {
-			$src     = $this->plugin_url( "{$this->js_patch}{$this->base_name}-{$handle}.js" );
+			$min ="";
+			if ( $this->min ) {
+				$min= ".min";
+			}
+			$src     = $this->plugin_url( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;

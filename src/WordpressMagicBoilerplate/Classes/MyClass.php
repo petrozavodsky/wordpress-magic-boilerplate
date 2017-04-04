@@ -11,7 +11,6 @@ namespace WordpressMagicBoilerplate\Classes {
 		private $base_name;
 
 		/**
-		 * Card constructor.
 		 *
 		 * @param object $state
 		 */

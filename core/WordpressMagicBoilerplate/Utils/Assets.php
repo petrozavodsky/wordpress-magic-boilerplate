@@ -10,9 +10,59 @@ namespace WordpressMagicBoilerplate\Utils;
 
 trait Assets {
 
-	private $file;
-	private $css_patch = "public/css/";
-	private $js_patch = "public/js/";
+	private $defaults_vars = array(
+		'css_patch' => "public/css/",
+		'js_patch'  => "public/js/",
+		'version'   => "1.0.0",
+	);
+
+	public function __get( $name ) {
+		if ( $name == 'base_name' ) {
+			return $this->basename_helper();
+		}
+		if ( $name == 'file' ) {
+			return $this->plugin_dir();
+		}
+		if ( array_key_exists( $name, $this->defaults_vars ) ) {
+			return $this->defaults_vars[ $name ];
+		}
+
+		return null;
+	}
+
+	public function basename_helper() {
+		$array  = explode( '\\', __NAMESPACE__ );
+		$id   = array_shift( $array );
+		return $id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function plugin_dir() {
+		$string = plugin_basename( __FILE__ );
+		$array  = explode( '/', $string );
+		$path   = array_shift( $array );
+
+		return WP_PLUGIN_DIR . '/' . $path . '/';
+	}
+
+	/**
+	 * @param mixed string|bool $val
+	 *
+	 * @return string
+	 */
+	public function plugin_url( $val = false ) {
+		$string      = plugin_basename( __FILE__ );
+		$array       = explode( '/', $string );
+		$path        = array_shift( $array );
+		$plugins_url = plugin_dir_url( WP_PLUGIN_DIR . '/' . $path . '/' );
+		if ( ! $val ) {
+			return $plugins_url . $path . "/";
+		}
+
+		return $plugins_url . $path . "/" . $val;
+	}
 
 	/**
 	 * @param string $handle
@@ -24,8 +74,9 @@ trait Assets {
 	 * @return string
 	 */
 	public function registerJs( $handle, $in_footer = false, $dep = array(), $version = false, $src = false ) {
+		$this->basename_helper();
 		if ( ! $src ) {
-			$src     = plugin_dir_url( $this->file ) . "{$this->js_patch}{$this->base_name}-{$handle}.js";
+			$src     = $this->plugin_url( "{$this->js_patch}{$this->base_name}-{$handle}.js" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;
@@ -33,13 +84,16 @@ trait Assets {
 		if ( ! $version ) {
 			$version = $this->version;
 		}
-		wp_enqueue_script(
-			$file_id,
-			$src,
-			$dep,
-			$version,
-			$in_footer
-		);
+
+		add_action( "plugins_loaded", function () use ( $in_footer, $version, $dep, $src, $file_id ) {
+			wp_enqueue_script(
+				$file_id,
+				$src,
+				$dep,
+				$version,
+				$in_footer
+			);
+		}, 10 );
 
 		return $file_id;
 	}
@@ -62,10 +116,10 @@ trait Assets {
 			$position = "wp_head";
 		}
 
-		$handle    = $this->registerJs( $handle, $position, $dep, $version, $src );
+		$handle = $this->registerJs( $handle, $position, $dep, $version, $src );
 		add_action( $position, function () use ( $in_footer, $handle, $src, $dep, $version ) {
 			wp_enqueue_script( $handle, $src, $dep, $version, $in_footer );
-		} );
+		}, 20 );
 
 		return $handle;
 	}
@@ -81,7 +135,7 @@ trait Assets {
 	 */
 	public function registerCss( $handle, $dep = array(), $version = false, $src = false, $media = 'all' ) {
 		if ( ! $src ) {
-			$src     = plugin_dir_url( $this->file ) . "{$this->css_patch}{$this->base_name}-{$handle}.css";
+			$src     = $this->plugin_url( "{$this->css_patch}{$this->base_name}-{$handle}.css" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;
@@ -89,13 +143,15 @@ trait Assets {
 		if ( ! $version ) {
 			$version = $this->version;
 		}
-		wp_register_style(
-			$file_id,
-			$src,
-			$dep,
-			$version,
-			$media
-		);
+		add_action( "wp_enqueue_scripts", function () use ( $media, $version, $dep, $src, $file_id ) {
+			wp_register_style(
+				$file_id,
+				$src,
+				$dep,
+				$version,
+				$media
+			);
+		}, 10 );
 
 		return $file_id;
 	}
@@ -120,11 +176,9 @@ trait Assets {
 		$handle = $this->registerCss( $handle, $dep, $version, $src, $media );
 		add_action( $position, function () use ( $media, $handle, $dep, $version, $src ) {
 			wp_enqueue_style( $handle );
-		} );
+		}, 20 );
 
 		return $handle;
 	}
-
-	
 
 }

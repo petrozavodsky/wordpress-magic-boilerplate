@@ -91,7 +91,7 @@ trait Assets {
 			$version = $this->version;
 		}
 
-		add_action( "plugins_loaded", function () use ( $in_footer, $version, $dep, $src, $file_id ) {
+		add_action( "wp_enqueue_scripts", function () use ( $in_footer, $version, $dep, $src, $file_id ) {
 			wp_enqueue_script(
 				$file_id,
 				$src,

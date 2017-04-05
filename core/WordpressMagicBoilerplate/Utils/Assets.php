@@ -79,7 +79,7 @@ trait Assets {
 		$this->basename_helper();
 		if ( ! $src ) {
 			$min ="";
-			if ( $this->min ) {
+			if ( $this->min && CONCATENATE_SCRIPTS != false) {
 				$min= ".min";
 			}
 			$src     = $this->plugin_url( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );

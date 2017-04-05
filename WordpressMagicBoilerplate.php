@@ -16,7 +16,7 @@ new Autoloader( __FILE__, 'WordpressMagicBoilerplate' );
 use WordpressMagicBoilerplate\Base\Wrap;
 
 class WordpressMagicBoilerplate extends Wrap {
-	public $version = '1.0.0-rc.2';
+	public $version = '1.0.0-rc.3';
 
 	function __construct() {
 		$this->init( __FILE__, get_called_class() );

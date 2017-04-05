@@ -49,6 +49,9 @@ namespace WordpressMagicBoilerplate {
 		}
 
 
+		/**
+		 * @return void
+		 */
 		function autoload() {
 			require_once( 'Autoload.php' );
 			$this->loader = new Autoload();

@@ -1,7 +1,7 @@
 <?php
 
 namespace WordpressMagicBoilerplate\Base;
-abstract class Wrap {
+class Wrap {
 	private $space;
 	public $version = '1.0.0';
 	public $prefix;

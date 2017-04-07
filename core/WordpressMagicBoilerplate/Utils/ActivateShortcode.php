@@ -4,19 +4,34 @@ namespace WordpressMagicBoilerplate\Utils;
 
 abstract class ActivateShortcode {
 
+	use Assets;
+	protected $js = false;
+	protected $css = false;
+
 	private $attrs = array();
 
-	/**
-	 * ActivateShortcode constructor.
-	 *
-	 * @param string $tag
-	 * @param array|bool $attrs
-	 */
 	public function __construct( $tag, $attrs = false ) {
 		if ( $attrs !== false ) {
 			$this->attrs = $attrs;
 		}
-		add_shortcode( $tag, array( $this, 'wrap' ) );
+
+		add_action( 'template_redirect', function () use ( $tag ) {
+			add_shortcode( $tag, array( $this, 'wrap' ) );
+			$this->assets( $tag );
+
+		} );
+	}
+
+	private function assets( $tag ) {
+		global $wp_query;
+		if ( is_singular() && is_object( $wp_query->post ) && has_shortcode( $wp_query->post->post_content, $tag ) ) {
+			if ( $this->js ) {
+				$this->addJs( $tag );
+			}
+			if ( $this->css ) {
+				$this->addCss( $tag );
+			}
+		}
 	}
 
 	/**
@@ -30,7 +45,7 @@ abstract class ActivateShortcode {
 		$content = $this->attr_checker( $content );
 		$tag     = $this->attr_checker( $tag );
 
-		if(count($this->attrs) > 0){
+		if ( count( $this->attrs ) > 0 ) {
 			$attrs = shortcode_atts( $this->attrs, $attrs );
 		}
 

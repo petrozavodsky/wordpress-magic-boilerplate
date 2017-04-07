@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vovasik
- * Date: 31.03.17
- * Time: 22:41
- */
 
 namespace WordpressMagicBoilerplate\Utils;
 

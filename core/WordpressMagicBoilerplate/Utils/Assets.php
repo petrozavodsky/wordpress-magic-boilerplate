@@ -109,10 +109,10 @@ trait Assets {
 	 */
 	public function addJs( $handle, $position = "wp_enqueue_scripts", $dep = array(), $version = false, $src = false ) {
 		$in_footer = false;
-		if ( $position == "footer" || $position == "body" ) {
+		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
 			$position  = "wp_footer";
 			$in_footer = true;
-		} elseif ( $position == "head" || $position == "wp_enqueue_script" || $position == "head" ) {
+		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
 			$position = "wp_head";
 		}
 
@@ -167,9 +167,9 @@ trait Assets {
 	 * @return string
 	 */
 	public function addCss( $handle, $position = "wp_enqueue_scripts", $dep = array(), $version = false, $src = false, $media = 'all' ) {
-		if ( $position == "footer" || $position == "body" ) {
+		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
 			$position = "wp_footer";
-		} elseif ( $position == "header" || $position == "wp_enqueue_script" || $position == "head" ) {
+		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
 			$position = "wp_enqueue_scripts";
 		}
 

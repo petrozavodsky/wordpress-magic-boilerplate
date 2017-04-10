@@ -25,6 +25,7 @@ abstract class Ajax {
 		$request = $_REQUEST;
 		unset($request['action']);
 		$this->callback($request);
+		die;
 	}
 
 	public function payload_action(){

@@ -32,8 +32,8 @@ class WordpressMagicBoilerplate extends Wrap {
 }
 
 
-function WordpressMagicBoilerplat__init() {
+function WordpressMagicBoilerplate__init() {
 	new WordpressMagicBoilerplate();
 }
 
-add_action( 'plugins_loaded', 'WordpressMagicBoilerplat__init', 30 );
+add_action( 'plugins_loaded', 'WordpressMagicBoilerplate__init', 30 );

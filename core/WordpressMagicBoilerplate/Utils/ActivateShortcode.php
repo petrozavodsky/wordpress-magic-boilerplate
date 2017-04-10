@@ -3,7 +3,6 @@
 namespace WordpressMagicBoilerplate\Utils;
 
 abstract class ActivateShortcode {
-
 	use Assets;
 	protected $js = false;
 	protected $css = false;
@@ -15,10 +14,17 @@ abstract class ActivateShortcode {
 			$this->attrs = $attrs;
 		}
 
-		add_action( 'template_redirect', function () use ( $tag ) {
+		if ( method_exists( $this, 'init' ) ) {
+			$this->init($tag, $attrs );
+		}
+
+		add_action( "shortcode_added__" . $tag, function () use ( $tag ) {
 			add_shortcode( $tag, array( $this, 'wrap' ) );
 			$this->assets( $tag );
+		} );
 
+		add_action( 'template_redirect', function () use ( $tag ) {
+			do_action( "shortcode_added__" . $tag );
 		} );
 	}
 
@@ -66,5 +72,6 @@ abstract class ActivateShortcode {
 	}
 
 	abstract function base( $attrs, $content, $tag );
+
 
 }

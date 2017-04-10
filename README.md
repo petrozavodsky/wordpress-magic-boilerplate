@@ -3,13 +3,13 @@ Wordpress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.sv
 =======================
 
 
-##WordPress Плагин
+## WordPress Плагин
 <img width='100' height='100' src="public/images/wordpress.png" title='Wordpress Magic Boilerplate' alt='Wordpress Magic Boilerplate' align='right'>
 
 Скелет плагина призванный привнести в ваш код WordPress код много срытой магии.
 Позволяет повысить порог вхождения джуниоров в проект, ломает сложившие паттерны разработки WordPress.
 
-##Полезность
+## Полезность
 
 Исходя из требований современных тенденций веб разработки плагин дает возможность ранее реализованные вещи более сложным образом.
 
@@ -24,7 +24,7 @@ Wordpress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.sv
 Я ещё не определился с полным списком фитч и точно не уверен.
 Документации на английском скорее всего не будет никогда.
 
-##Фитчи
+## Фитчи
 
  - [PSR-4 автозагрузка](http://www.php-fig.org/psr/psr-4/) классов;
  - Универсальная структура проекта;

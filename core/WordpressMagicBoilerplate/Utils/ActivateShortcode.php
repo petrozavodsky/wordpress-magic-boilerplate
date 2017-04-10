@@ -14,10 +14,6 @@ abstract class ActivateShortcode {
 			$this->attrs = $attrs;
 		}
 
-		if ( method_exists( $this, 'init' ) ) {
-			$this->init($tag, $attrs );
-		}
-
 		add_action( "shortcode_added__" . $tag, function () use ( $tag ) {
 			add_shortcode( $tag, array( $this, 'wrap' ) );
 			$this->assets( $tag );
@@ -26,6 +22,11 @@ abstract class ActivateShortcode {
 		add_action( 'template_redirect', function () use ( $tag ) {
 			do_action( "shortcode_added__" . $tag );
 		} );
+
+		if ( method_exists( $this, 'init' ) ) {
+			$this->init($tag, $attrs );
+		}
+
 	}
 
 	private function assets( $tag ) {

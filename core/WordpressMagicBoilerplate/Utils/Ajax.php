@@ -14,6 +14,10 @@ abstract class Ajax {
 	 */
 	function __construct( $action_name, $type = 'init_hook' ) {
 		$this->$type( $action_name );
+
+		if ( method_exists( $this, 'init' ) ) {
+			$this->init($action_name);
+		}
 	}
 
 	public function init_hook( $action_name, $callback = 'payload_action' ) {

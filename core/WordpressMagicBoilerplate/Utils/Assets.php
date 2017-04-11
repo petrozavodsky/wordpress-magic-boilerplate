@@ -12,17 +12,35 @@ trait Assets {
 	);
 
 	public function __get( $name ) {
+
 		if ( $name == 'base_name' ) {
 			return $this->basename_helper();
 		}
+
 		if ( $name == 'file' ) {
 			return $this->plugin_dir();
 		}
+
+		if ( $name == 'url' ) {
+			return $this->url();
+		}
+
 		if ( array_key_exists( $name, $this->defaults_vars ) ) {
 			return $this->defaults_vars[ $name ];
 		}
 
 		return null;
+	}
+
+	public function url() {
+		$plugins    = trailingslashit( plugins_url() );
+		$plugin     = plugin_dir_url( __FILE__ );
+		$plugin     = preg_replace( "#/$#", "", $plugin );
+		$path_array = str_replace( $plugins, '', $plugin );
+		$array      = explode( '/', $path_array );
+		$path       = array_shift( $array );
+
+		return trailingslashit( $plugins.$path );
 	}
 
 	public function basename_helper() {

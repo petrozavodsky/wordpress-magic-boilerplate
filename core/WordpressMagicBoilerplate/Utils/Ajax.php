@@ -20,13 +20,32 @@ abstract class Ajax {
 		}
 	}
 
+	/**
+	 * @param string $action_name
+	 * @param string $callback
+	 */
 	public function front( $action_name, $callback = 'payload_action' ) {
 		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
 		add_action( 'wp_ajax_nopriv_' . $action_name, array( $this, $callback ) );
 	}
 
+	/**
+	 * @param string $action_name
+	 * @param string $callback
+	 */
+
 	public function admin( $action_name, $callback = 'payload_action' ) {
 		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
+	}
+
+	/**
+	 * @param string $handle
+	 * @param array $data
+	 *
+	 * @return bool True if the script or false otherwise.
+	 */
+	public function vars_ajax( $handle, $data ) {
+		return wp_localize_script( $handle, $handle . "__vars", $data );
 	}
 
 	public function payload() {
@@ -42,6 +61,11 @@ abstract class Ajax {
 		die;
 	}
 
+	/**
+	 * @param string $request
+	 *
+	 * @return mixed
+	 */
 	abstract public function callback($request);
 
 }

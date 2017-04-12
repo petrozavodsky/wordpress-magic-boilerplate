@@ -12,7 +12,7 @@ abstract class Ajax {
 	 * @param string $type
 	 *
 	 */
-	function __construct( $action_name, $type = 'init_hook' ) {
+	function __construct( $action_name, $type = 'front' ) {
 		$this->$type( $action_name );
 
 		if ( method_exists( $this, 'init' ) ) {
@@ -20,9 +20,13 @@ abstract class Ajax {
 		}
 	}
 
-	public function init_hook( $action_name, $callback = 'payload_action' ) {
+	public function front( $action_name, $callback = 'payload_action' ) {
 		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
 		add_action( 'wp_ajax_nopriv_' . $action_name, array( $this, $callback ) );
+	}
+
+	public function admin( $action_name, $callback = 'payload_action' ) {
+		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
 	}
 
 	public function payload() {

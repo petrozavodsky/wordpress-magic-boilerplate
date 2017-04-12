@@ -39,13 +39,22 @@ abstract class Ajax {
 	}
 
 	/**
+	 *
 	 * @param string $handle
 	 * @param array $data
 	 *
-	 * @return bool True if the script or false otherwise.
 	 */
 	public function vars_ajax( $handle, $data ) {
-		return wp_localize_script( $handle, $handle . "__vars", $data );
+
+		add_action( 'wp_enqueue_scripts', function () use ( $data, $handle ) {
+			wp_localize_script(
+				$handle,
+				$handle . "__vars",
+				$data
+			);
+
+		}, 80 );
+
 	}
 
 	public function payload() {

@@ -5,6 +5,10 @@ namespace WordpressMagicBoilerplate\Utils;
 
 abstract class Ajax {
 
+	protected $ajax_url;
+	protected $ajax_url_action;
+
+
 	/**
 	 * Ajax constructor.
 	 *
@@ -13,6 +17,10 @@ abstract class Ajax {
 	 *
 	 */
 	function __construct( $action_name, $type = 'front' ) {
+
+		$this->ajax_url        = $this->create_ajax_url();
+		$this->ajax_url_action = $this->create_ajax_url_action( $action_name );
+
 		$this->$type( $action_name );
 
 		if ( method_exists( $this, 'init' ) ) {
@@ -21,21 +29,19 @@ abstract class Ajax {
 	}
 
 	/**
-	 * @param string $action_name
-	 * @param string $callback
+	 * @return string
 	 */
-	public function front( $action_name, $callback = 'payload_action' ) {
-		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
-		add_action( 'wp_ajax_nopriv_' . $action_name, array( $this, $callback ) );
+	protected function create_ajax_url() {
+		return admin_url( 'admin-ajax.php' );
 	}
 
 	/**
-	 * @param string $action_name
-	 * @param string $callback
+	 * @param $action
+	 *
+	 * @return string
 	 */
-
-	public function admin( $action_name, $callback = 'payload_action' ) {
-		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
+	protected function create_ajax_url_action( $action ) {
+		return add_query_arg( array( 'action' => $action ), $this->ajax_url );
 	}
 
 	/**
@@ -57,11 +63,20 @@ abstract class Ajax {
 
 	}
 
+	public function front( $action_name, $callback = 'payload_action' ) {
+		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
+		add_action( 'wp_ajax_nopriv_' . $action_name, array( $this, $callback ) );
+	}
+
+
+	public function admin( $action_name, $callback = 'payload_action' ) {
+		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
+	}
+
 	public function payload() {
 		$request = $_REQUEST;
 		unset( $request['action'] );
 		$this->callback( $request );
-		die;
 	}
 
 	public function payload_action() {
@@ -70,11 +85,6 @@ abstract class Ajax {
 		die;
 	}
 
-	/**
-	 * @param string $request
-	 *
-	 * @return mixed
-	 */
 	abstract public function callback( $request );
 
 }

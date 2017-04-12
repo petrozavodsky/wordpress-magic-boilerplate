@@ -16,7 +16,7 @@ abstract class Ajax {
 		$this->$type( $action_name );
 
 		if ( method_exists( $this, 'init' ) ) {
-			$this->init($action_name);
+			$this->init( $action_name );
 		}
 	}
 
@@ -49,7 +49,7 @@ abstract class Ajax {
 		add_action( 'wp_enqueue_scripts', function () use ( $data, $handle ) {
 			wp_localize_script(
 				$handle,
-				$handle . "__vars",
+				str_replace( '-', '_', $handle . "__vars" ),
 				$data
 			);
 
@@ -59,14 +59,14 @@ abstract class Ajax {
 
 	public function payload() {
 		$request = $_REQUEST;
-		unset($request['action']);
-		$this->callback($request);
+		unset( $request['action'] );
+		$this->callback( $request );
 		die;
 	}
 
-	public function payload_action(){
+	public function payload_action() {
 		$request = $_REQUEST;
-		$this->callback($request);
+		$this->callback( $request );
 		die;
 	}
 
@@ -75,6 +75,6 @@ abstract class Ajax {
 	 *
 	 * @return mixed
 	 */
-	abstract public function callback($request);
+	abstract public function callback( $request );
 
 }

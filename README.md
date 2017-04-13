@@ -39,7 +39,11 @@ Wordpress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.sv
  - Обертка для легкого создания [шорткодов](https://codex.wordpress.org/Function_Reference/add_shortcode);
  - Возможно что то еще.
 
-## Сборка фронтенда 
+## Стиль кода
+
+В ядре WordPress для именования классов принято KebabCase но в коде плагина используется CamelCase, сделано намерено, так как редакторы и ide по умолчанию лучше работают с CamelCase к тому же в примерах реализации psr4 мягко говоря трудно найти KebabCase. 
+
+## Сборка фронтенда
 
 Для сборки используется таск менеджер [Gulp](http://gulpjs.com/) .
 

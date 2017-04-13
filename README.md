@@ -41,7 +41,7 @@ Wordpress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.sv
 
 ## Стиль кода
 
-В ядре WordPress для именования классов принято KebabCase но в коде плагина используется CamelCase, сделано намерено, так как редакторы и ide по умолчанию лучше работают с CamelCase к тому же в примерах реализации psr4 мягко говоря трудно найти KebabCase. 
+В ядре WordPress для именования классов принято KebabCase но в коде плагина используется CamelCase, сделано намерено, так как редакторы и ide по умолчанию лучше работают с CamelCase к тому же в примерах реализации psr4 мягко говоря трудно найти KebabCase. В остальном рекомендации [wordpress.org](https://codex.wordpress.org/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D1%8B_%D0%BA%D0%BE%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_PHP) хорошие и их нужно соблюдать.
 
 ## Сборка фронтенда
 

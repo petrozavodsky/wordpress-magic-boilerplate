@@ -27,15 +27,6 @@ class WordpressMagicBoilerplate extends Wrap {
 			'WordpressMagicBoilerplate'
 		);
 
-		d(
-			$this,
-			$this->url,
-			$this->file,
-			$this->base_name,
-			$this->space,
-			$this->prefix
-		);
-
 	}
 
 

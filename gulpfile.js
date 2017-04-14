@@ -1,6 +1,7 @@
 const gulp = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
-    plugins = gulpLoadPlugins();
+    plugins = gulpLoadPlugins(),
+    sourcemaps = require('gulp-sourcemaps');
 
 const plugin_src = {
     js: [
@@ -29,15 +30,16 @@ gulp.task('js', function () {
         .pipe(plugins.notify({message: 'Скрипты плагина собрались'}));
 });
 
+
+
 gulp.task('css', function () {
     return gulp.src(plugin_src.css)
+        .pipe(sourcemaps.init())
         .pipe(plugins.plumber())
         .pipe(plugins.less())
         .pipe(plugins.autoprefixer(['last 3 versions']))
         .pipe(plugins.csso())
-        .pipe(plugins.rename({
-            extname: ".css"
-        }))
+        .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest(function (file) {
             return file.base;
         }))

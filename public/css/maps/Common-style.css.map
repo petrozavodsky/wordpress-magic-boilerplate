@@ -1,0 +1,1 @@
+{"version":3,"sources":["Common-style.less"],"names":[],"mappings":"AAAA,iC,CACE,c","file":"../Common-style.css","sourcesContent":[".single-card__row.bottom.cupboard{\r\n  background: red;\r\n}"]}

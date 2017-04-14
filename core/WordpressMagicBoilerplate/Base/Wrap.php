@@ -2,45 +2,80 @@
 
 namespace WordpressMagicBoilerplate\Base;
 class Wrap {
-	private $space;
 	public $version = '1.0.0';
-	public $prefix;
-	public $base_name;
-	public $file;
 	public $css_patch = "public/css/";
 	public $js_patch = "public/js/";
-	public $path;
-	public $url;
 
-	function init( $file, $className ) {
-		$this->file      = $file;
-		$this->space     = $className;
-		$this->prefix    = "_{$this->space}";
-		$this->base_name = $this->space;
-		$this->addState( $this->file );
+	private $defaults_vars = array(
+		'css_patch' => "public/css/",
+		'js_patch'  => "public/js/",
+		'version'   => "1.0.0",
+		'min'       => true
+	);
+
+	public function __get( $name ) {
+
+		if ( $name == 'base_name' ) {
+			return $this->basename_helper();
+		}
+
+		if ( $name == 'space' ) {
+			return $this->basename_helper();
+		}
+
+		if ( $name == 'prefix' ) {
+			return  '_'.$this->basename_helper();
+
+		}
+
+		if ( $name == 'file' ) {
+			return $this->plugin_dir();
+		}
+
+		if ( $name == 'url' ) {
+			return $this->url();
+		}
+
+		if ( array_key_exists( $name, $this->defaults_vars ) ) {
+			return $this->defaults_vars[ $name ];
+		}
+
+		return null;
+	}
+
+
+	public function basename_helper() {
+		$array = explode( '\\', __NAMESPACE__ );
+		$id    = array_shift( $array );
+
+		return $id;
 	}
 
 	/**
-	 * @param $file resource
-	 *
-	 * @return void
+	 * @return string
 	 */
-	private function addState( $file ) {
-		$this->path = plugin_dir_path( $file );
-		$this->url  = plugin_dir_url( $file );
-	}
+	public function plugin_dir() {
+		$string = plugin_basename( __FILE__ );
+		$array  = explode( '/', $string );
+		$path   = array_shift( $array );
 
+		return WP_PLUGIN_DIR . '/' . $path . '/';
+	}
 
 	/**
-	 * @param string $val
-	 *
-	 * @return $this
+	 * @return string
 	 */
-	public function setSpace( $val ) {
-		$this->space = $val;
+	public function url() {
+		$plugins    = trailingslashit( plugins_url() );
+		$plugin     = plugin_dir_url( __FILE__ );
+		$plugin     = preg_replace( "#/$#", "", $plugin );
+		$path_array = str_replace( $plugins, '', $plugin );
+		$array      = explode( '/', $path_array );
+		$path       = array_shift( $array );
 
-		return $this;
+		return trailingslashit( $plugins.$path );
 	}
+
 
 	/**
 	 * @param string $val

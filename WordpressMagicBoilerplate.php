@@ -19,13 +19,23 @@ class WordpressMagicBoilerplate extends Wrap {
 	public $version = '1.0.0-rc.3';
 
 	function __construct() {
-		$this->init( __FILE__, get_called_class() );
+
 		new \WordpressMagicBoilerplate\Classes\MyClass( $this );
 		new \WordpressMagicBoilerplate\Utils\ActivateWidgets(
 			__FILE__,
 			'Widgets',
 			'WordpressMagicBoilerplate'
 		);
+
+		d(
+			$this,
+			$this->url,
+			$this->file,
+			$this->base_name,
+			$this->space,
+			$this->prefix
+		);
+
 	}
 
 

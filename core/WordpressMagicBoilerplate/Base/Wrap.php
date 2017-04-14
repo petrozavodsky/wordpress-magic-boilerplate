@@ -13,6 +13,11 @@ class Wrap {
 		'min'       => true
 	);
 
+	/**
+	 * @param $name
+	 *
+	 * @return mixed|null|string
+	 */
 	public function __get( $name ) {
 
 		if ( $name == 'base_name' ) {
@@ -44,6 +49,9 @@ class Wrap {
 	}
 
 
+	/**
+	 * @return string
+	 */
 	public function basename_helper() {
 		$array = explode( '\\', __NAMESPACE__ );
 		$id    = array_shift( $array );

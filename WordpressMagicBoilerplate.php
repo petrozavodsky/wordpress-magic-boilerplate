@@ -20,6 +20,7 @@ class WordpressMagicBoilerplate extends Wrap {
 
 	function __construct() {
 		$this->setTextdomain();
+		new \WordpressMagicBoilerplate\Classes\AjaxOut('boilerplate-ajax');
 		new \WordpressMagicBoilerplate\Classes\MyClass( $this );
 		new \WordpressMagicBoilerplate\Utils\ActivateWidgets(
 			__FILE__,

@@ -24,7 +24,7 @@ class Wrap {
 		}
 
 		if ( $name == 'prefix' ) {
-			return  '_'.$this->basename_helper();
+			return '_' . $this->basename_helper();
 
 		}
 
@@ -73,7 +73,7 @@ class Wrap {
 		$array      = explode( '/', $path_array );
 		$path       = array_shift( $array );
 
-		return trailingslashit( $plugins.$path );
+		return trailingslashit( $plugins . $path );
 	}
 
 
@@ -88,6 +88,16 @@ class Wrap {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @return bool True on success, false on failure.
+	 */
+	function setTextdomain($domine = false) {
+		if(!$domine){
+			$domine = $this->base_name;
+		}
+		return load_textdomain( $domine, $this->plugin_path . "languages/$this->base_name-" . get_locale() . '.mo' );
+	}
 
 
 }

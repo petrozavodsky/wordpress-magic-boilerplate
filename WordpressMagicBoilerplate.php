@@ -27,7 +27,13 @@ class WordpressMagicBoilerplate extends Wrap {
 			'Widgets',
 			'WordpressMagicBoilerplate'
 		);
-
+		new \WordpressMagicBoilerplate\Classes\Shortcode(
+			'boilerplate_shortcode',
+			[
+				'title'  => 'Boilerplate title',
+				'description' => 'Boilerplate description'
+			]
+		);
 	}
 
 

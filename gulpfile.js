@@ -4,8 +4,8 @@ const gulp = require('gulp'),
 
 const plugin_src = {
     js: [
-        'public/**/*.js',
-        '!public/**/*.min.js'
+        'public/js/*.js',
+        '!public/js/*.min.js'
     ],
     css: [
         'public/css/*.less'

@@ -96,8 +96,6 @@ class Wrap {
 		if(!$domine){
 			$domine = $this->base_name;
 		}
-		$t = "$this->base_name-" . get_locale() . '.mo';
-		d($t);
 		return load_textdomain( $domine, $this->plugin_path . "languages/$this->base_name-" . get_locale() . '.mo' );
 	}
 

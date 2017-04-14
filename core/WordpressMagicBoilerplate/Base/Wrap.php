@@ -28,11 +28,11 @@ class Wrap {
 
 		}
 
-		if ( $name == 'file' ) {
+		if ( $name == 'plugin_path' ) {
 			return $this->plugin_dir();
 		}
 
-		if ( $name == 'url' ) {
+		if ( $name == 'plugin_url' ) {
 			return $this->url();
 		}
 
@@ -87,5 +87,7 @@ class Wrap {
 
 		return $this;
 	}
+
+
 
 }

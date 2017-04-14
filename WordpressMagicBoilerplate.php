@@ -20,6 +20,7 @@ class WordpressMagicBoilerplate extends Wrap {
 
 	function __construct() {
 
+
 		new \WordpressMagicBoilerplate\Classes\MyClass( $this );
 		new \WordpressMagicBoilerplate\Utils\ActivateWidgets(
 			__FILE__,

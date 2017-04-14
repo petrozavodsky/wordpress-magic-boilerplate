@@ -32,9 +32,6 @@ trait Assets {
 		return null;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function url() {
 		$plugins    = trailingslashit( plugins_url() );
 		$plugin     = plugin_dir_url( __FILE__ );

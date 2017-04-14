@@ -18,15 +18,46 @@ namespace WordpressMagicBoilerplate\Classes {
 			$this->state     = $state;
 			$this->base_name = $state->base_name;
 			add_action( "get_header", array( $this, "router" ) );
-			$this->addCss( 'MyClassStyle', 'footer' );
+
 		}
 
+
 		public function router() {
+
+			//Add css in footer
+			$this->addCss(
+				'MyClassStyle',
+				'footer'
+			);
+
+			//Add custom url css
+			$this->addCss(
+				"Common-style",
+				"header",
+				array(),
+				$this->state->version,
+				$this->state->plugin_url . $this->state->css_patch . "Common-style.css"
+			);
+
+			//page type rout
 			if ( is_singular( $this->post_type ) ) {
-				$this->addCss( "Single-style", "footer" );
-				$this->addJs( "Single-script", "footer", array( "jquery" ), "1.0.0" );
+
+				//Add auto url css
+				$this->addCss(
+					"Single-style",
+					"footer"
+				);
+
+				//Add auto url js
+				$this->addJs(
+					"Single-script",
+					"footer",
+					array( "jquery" ),
+					"1.0.0"
+				);
 			}
 		}
+
 	}
 
 

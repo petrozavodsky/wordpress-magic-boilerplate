@@ -9,6 +9,12 @@ abstract class ActivateShortcode {
 
 	private $attrs = array();
 
+	/**
+	 * ActivateShortcode constructor.
+	 *
+	 * @param $tag
+	 * @param bool $attrs
+	 */
 	public function __construct( $tag, $attrs = false ) {
 		if ( $attrs !== false ) {
 			$this->attrs = $attrs;
@@ -29,6 +35,9 @@ abstract class ActivateShortcode {
 
 	}
 
+	/**
+	 * @param $tag
+	 */
 	private function assets( $tag ) {
 		global $wp_query;
 		if ( is_singular() && is_object( $wp_query->post ) && has_shortcode( $wp_query->post->post_content, $tag ) ) {
@@ -72,6 +81,13 @@ abstract class ActivateShortcode {
 		return $val;
 	}
 
+	/**
+	 * @param $attrs
+	 * @param $content
+	 * @param $tag
+	 *
+	 * @return string
+	 */
 	abstract function base( $attrs, $content, $tag );
 
 

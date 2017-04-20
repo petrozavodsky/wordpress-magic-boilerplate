@@ -38,7 +38,7 @@ abstract class ActivateShortcode {
 	/**
 	 * @param $tag
 	 */
-	private function assets( $tag ) {
+	protected function assets( $tag ) {
 		global $wp_query;
 		if ( is_singular() && is_object( $wp_query->post ) && has_shortcode( $wp_query->post->post_content, $tag ) ) {
 			if ( $this->js ) {

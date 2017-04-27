@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/petrozavodsky/wordpress-magic-boilerplate#readme",
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-csso": "^3.0.0",

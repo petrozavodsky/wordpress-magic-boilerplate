@@ -1,7 +1,8 @@
 const gulp = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     plugins = gulpLoadPlugins(),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    del = require('del');
 
 const plugin_src = {
     js: [
@@ -10,6 +11,9 @@ const plugin_src = {
     ],
     css: [
         'public/css/*.less'
+    ],
+    cssMaps:[
+        'public/css/maps/*'
     ]
 };
 
@@ -45,6 +49,10 @@ gulp.task('css', function () {
         .pipe(plugins.notify({message: 'Стили плагина собрались'}));
 });
 
+gulp.task('clean', function(cb) {
+    del(plugin_src.cssMaps, cb);
+});
+
 gulp.task('watch', function () {
 
     gulp.watch(
@@ -63,6 +71,6 @@ gulp.task('watch', function () {
         });
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['clean', 'css', 'js', 'watch']);
 
 

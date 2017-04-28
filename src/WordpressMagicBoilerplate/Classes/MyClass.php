@@ -21,7 +21,6 @@ namespace WordpressMagicBoilerplate\Classes {
 
 		}
 
-
 		public function router() {
 
 			//Add css in footer
@@ -59,6 +58,5 @@ namespace WordpressMagicBoilerplate\Classes {
 		}
 
 	}
-
 
 }

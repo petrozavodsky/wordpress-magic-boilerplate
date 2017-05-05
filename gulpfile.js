@@ -72,5 +72,3 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['clean', 'css', 'js', 'watch']);
-
-

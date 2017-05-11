@@ -192,7 +192,7 @@ trait Assets {
 		}
 
 		$handle = $this->registerCss( $handle, $dep, $version, $src, $media );
-		add_action( $position, function () use ( $media, $handle, $dep, $version, $src ) {
+		add_action( $position, function () use (  $handle ) {
 			wp_enqueue_style( $handle );
 		}, 20 );
 

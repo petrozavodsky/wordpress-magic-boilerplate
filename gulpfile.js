@@ -14,6 +14,9 @@ const plugin_src = {
     ],
     cssMaps:[
         'public/css/maps/*'
+    ],
+    images: [
+        'public/images/**/*.svg'
     ]
 };
 
@@ -47,6 +50,16 @@ gulp.task('css', function () {
             return file.base;
         }))
         .pipe(plugins.notify({message: 'Стили плагина собрались'}));
+});
+
+gulp.task('images', function() {
+
+    gulp.src(plugin_src.images)
+        .pipe(plugins.svgo())
+        .pipe(gulp.dest(function (file) {
+            return file.base;
+        }))
+        .pipe(plugins.notify({message: 'SVG оптимизированы'}));
 });
 
 gulp.task('clean', function(cb) {

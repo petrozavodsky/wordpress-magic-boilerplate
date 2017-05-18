@@ -4,9 +4,7 @@ namespace WordpressMagicBoilerplate\Utils;
 
 trait WidgetHelper {
 
-	protected $js = false;
-	protected $css = false;
-
+	use Assets;
 
 	public function addWidgetAssets() {
 		add_action( "wp", function () {

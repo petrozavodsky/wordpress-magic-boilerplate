@@ -43,7 +43,7 @@ gulp.task('css', function () {
         .pipe(sourcemaps.init())
         .pipe(plugins.plumber())
         .pipe(plugins.less())
-        .pipe(plugins.autoprefixer(['last 3 versions']))
+        .pipe(plugins.autoprefixer(['ios_saf >= 6', 'last 3 versions']))
         .pipe(plugins.csso())
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest(function (file) {

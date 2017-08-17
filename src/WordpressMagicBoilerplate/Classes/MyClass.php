@@ -1,62 +1,60 @@
 <?php
 
-namespace WordpressMagicBoilerplate\Classes {
+namespace WordpressMagicBoilerplate\Classes;
 
-	use WordpressMagicBoilerplate\Utils\Assets;
+use WordpressMagicBoilerplate\Utils\Assets;
 
-	class MyClass {
-		use Assets;
-		private $state;
-		private $post_type = 'post';
-		private $base_name;
+class MyClass {
+	use Assets;
+	private $state;
+	private $post_type = 'post';
+	private $base_name;
 
-		/**
-		 *
-		 * @param object $state
-		 */
-		function __construct( $state ) {
-			$this->state     = $state;
-			$this->base_name = $state->base_name;
-			add_action( "get_header", array( $this, "router" ) );
+	/**
+	 *
+	 * @param object $state
+	 */
+	function __construct( $state ) {
+		$this->state     = $state;
+		$this->base_name = $state->base_name;
+		add_action( "get_header", array( $this, "router" ) );
 
-		}
+	}
 
-		public function router() {
+	public function router() {
 
-			//Add css in footer
+		//Add css in footer
+		$this->addCss(
+			'MyClassStyle',
+			'footer'
+		);
+
+		//Add custom url css
+		$this->addCss(
+			"Common-style",
+			"header",
+			array(),
+			$this->state->version,
+			$this->state->plugin_url . $this->state->css_patch . "Common-style.css"
+		);
+
+		//page type rout
+		if ( is_singular( $this->post_type ) ) {
+
+			//Add auto url css
 			$this->addCss(
-				'MyClassStyle',
-				'footer'
+				"Single-style",
+				"footer"
 			);
 
-			//Add custom url css
-			$this->addCss(
-				"Common-style",
-				"header",
-				array(),
-				$this->state->version,
-				$this->state->plugin_url . $this->state->css_patch . "Common-style.css"
+			//Add auto url js
+			$this->addJs(
+				"Single-script",
+				"footer",
+				array( "jquery" ),
+				"1.0.0"
 			);
-
-			//page type rout
-			if ( is_singular( $this->post_type ) ) {
-
-				//Add auto url css
-				$this->addCss(
-					"Single-style",
-					"footer"
-				);
-
-				//Add auto url js
-				$this->addJs(
-					"Single-script",
-					"footer",
-					array( "jquery" ),
-					"1.0.0"
-				);
-			}
 		}
-
 	}
 
 }

@@ -1,7 +1,6 @@
 <?php
 
-namespace WordpressMagicBoilerplate {
-
+namespace WordpressMagicBoilerplate;
 	class Autoloader {
 
 		private $loader;
@@ -59,4 +58,3 @@ namespace WordpressMagicBoilerplate {
 		}
 
 	}
-}

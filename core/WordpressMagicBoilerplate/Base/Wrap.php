@@ -6,12 +6,12 @@ class Wrap {
 	public $css_patch = "public/css/";
 	public $js_patch = "public/js/";
 
-	private $defaults_vars = array(
+	private $defaults_vars = [
 		'css_patch' => "public/css/",
 		'js_patch'  => "public/js/",
 		'version'   => "1.0.0",
 		'min'       => true
-	);
+	];
 
 	/**
 	 * @param $name

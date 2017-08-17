@@ -15,7 +15,7 @@ class Autoload {
 	 *
 	 * @var array
 	 */
-	protected $prefixes = array();
+	protected $prefixes = [];
 
 	/**
 	 * Register loader with SPL autoloader stack.
@@ -23,7 +23,7 @@ class Autoload {
 	 * @return void
 	 */
 	public function register() {
-		spl_autoload_register( array( $this, 'loadClass' ) );
+		spl_autoload_register( [ $this, 'loadClass' ] );
 	}
 
 	/**
@@ -45,7 +45,7 @@ class Autoload {
 		$base_dir = rtrim( $base_dir, DIRECTORY_SEPARATOR ) . '/';
 
 		if ( isset( $this->prefixes[ $prefix ] ) === false ) {
-			$this->prefixes[ $prefix ] = array();
+			$this->prefixes[ $prefix ] = [];
 		}
 
 		if ( $prepend ) {

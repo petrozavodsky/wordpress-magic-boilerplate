@@ -7,7 +7,7 @@ abstract class ActivateShortcode {
 	protected $js = false;
 	protected $css = false;
 
-	private $attrs = array();
+	private $attrs = [];
 
 	/**
 	 * ActivateShortcode constructor.
@@ -21,7 +21,7 @@ abstract class ActivateShortcode {
 		}
 
 		add_action( "shortcode_added__" . $tag, function () use ( $tag ) {
-			add_shortcode( $tag, array( $this, 'wrap' ) );
+			add_shortcode( $tag, [ $this, 'wrap' ] );
 			$this->assets( $tag );
 		} );
 

@@ -41,7 +41,7 @@ abstract class Ajax {
 	 * @return string
 	 */
 	protected function create_ajax_url_action( $action ) {
-		return add_query_arg( array( 'action' => $action ), $this->ajax_url );
+		return add_query_arg( [ 'action' => $action ], $this->ajax_url );
 	}
 
 	/**
@@ -64,13 +64,13 @@ abstract class Ajax {
 	}
 
 	public function front( $action_name, $callback = 'payload_action' ) {
-		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
-		add_action( 'wp_ajax_nopriv_' . $action_name, array( $this, $callback ) );
+		add_action( 'wp_ajax_' . $action_name, [ $this, $callback]  );
+		add_action( 'wp_ajax_nopriv_' . $action_name, [ $this, $callback ] );
 	}
 
 
 	public function admin( $action_name, $callback = 'payload_action' ) {
-		add_action( 'wp_ajax_' . $action_name, array( $this, $callback ) );
+		add_action( 'wp_ajax_' . $action_name, [$this, $callback] );
 	}
 
 	public function payload() {

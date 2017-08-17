@@ -4,12 +4,12 @@ namespace WordpressMagicBoilerplate\Utils;
 
 trait Assets {
 
-	private $defaults_vars = array(
+	private $defaults_vars = [
 		'css_patch' => "public/css/",
 		'js_patch'  => "public/js/",
 		'version'   => "1.0.0",
 		'min'       => true
-	);
+	];
 
 	public function __get( $name ) {
 
@@ -87,7 +87,7 @@ trait Assets {
 	 *
 	 * @return string
 	 */
-	public function registerJs( $handle, $in_footer = false, $dep = array(), $version = false, $src = false ) {
+	public function registerJs( $handle, $in_footer = false, $dep = [], $version = false, $src = false ) {
 		$this->basename_helper();
 		if ( ! $src ) {
 			$min ="";
@@ -125,7 +125,7 @@ trait Assets {
 	 *
 	 * @return string
 	 */
-	public function addJs( $handle, $position = "wp_enqueue_scripts", $dep = array(), $version = false, $src = false ) {
+	public function addJs( $handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false ) {
 		$in_footer = false;
 		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
 			$position  = "wp_footer";
@@ -151,7 +151,7 @@ trait Assets {
 	 *
 	 * @return string
 	 */
-	public function registerCss( $handle, $dep = array(), $version = false, $src = false, $media = 'all' ) {
+	public function registerCss( $handle, $dep = [], $version = false, $src = false, $media = 'all' ) {
 		if ( ! $src ) {
 			$src     = $this->plugin_url( "{$this->css_patch}{$this->base_name}-{$handle}.css" );
 			$file_id = $this->base_name . "-" . $handle;
@@ -184,7 +184,7 @@ trait Assets {
 	 *
 	 * @return string
 	 */
-	public function addCss( $handle, $position = "wp_enqueue_scripts", $dep = array(), $version = false, $src = false, $media = 'all' ) {
+	public function addCss( $handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false, $media = 'all' ) {
 		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
 			$position = "wp_footer";
 		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {

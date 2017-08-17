@@ -14,9 +14,9 @@ class MagicWidget extends WP_Widget {
 		parent::__construct(
 			$className,
 			__( "My widget {$this->suffix}", $this->textdomain ),
-			array(
+			[
 				'description' => __( "My widget {$this->suffix}", $this->textdomain )
-			)
+			]
 		);
 	}
 

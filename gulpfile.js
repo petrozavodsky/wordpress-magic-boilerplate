@@ -7,10 +7,12 @@ const gulp = require('gulp'),
 const plugin_src = {
     js: [
         'public/js/*.js',
-        '!public/js/*.min.js'
+        '!public/js/*.min.js',
+        '!public/js/vendor/**/*.js'
     ],
     css: [
-        'public/css/*.less'
+        'public/css/*.less',
+        'public/css/vendor/**/*.less'
     ],
     cssMaps:[
         'public/css/maps/*'

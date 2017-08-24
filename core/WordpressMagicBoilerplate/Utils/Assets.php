@@ -137,11 +137,11 @@ trait Assets {
 			$position  = "wp_footer";
 			$in_footer = true;
 		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
-			$position = "wp_head";
-		}elseif($position='admin' || $position='admin_header'|| $position='admin_head'){
-			$position = 'admin_enqueue_scripts';
-		}elseif($position='login' || $position='login-page'){
-			$position = 'login_enqueue_scripts';
+			 $position = "wp_head";
+		} elseif ($position == 'admin' || $position == 'admin_header'|| $position  ==  'admin_head'){
+			 $position = 'admin_enqueue_scripts';
+		} elseif ($position  ==  'login' || $position  == 'login-page'){
+			 $position = 'login_enqueue_scripts';
 		}
 
 		$handle = $this->registerJs( $handle, $position, $dep, $version, $src );
@@ -205,10 +205,10 @@ trait Assets {
 		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
 			$position = "wp_footer";
 		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
-			$position = "wp_enqueue_scripts";
-		}elseif($position='admin' || $position='admin_header'|| $position='admin_head'){
-			$position = 'admin_enqueue_scripts';
-		}elseif($position='login' || $position='login-page'){
+			 $position = "wp_enqueue_scripts";
+		} elseif ($position == 'admin' || $position == 'admin_header'|| $position == 'admin_head'){
+			 $position = 'admin_enqueue_scripts';
+		} elseif ($position == 'login' || $position == 'login-page'){
 			$position = 'login_enqueue_scripts';
 		}
 

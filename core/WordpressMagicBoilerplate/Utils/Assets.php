@@ -103,7 +103,13 @@ trait Assets {
 			$version = $this->version;
 		}
 
-		add_action( "wp_enqueue_scripts", function () use ( $in_footer, $version, $dep, $src, $file_id ) {
+		$hook = "wp_enqueue_scripts";
+
+		if ( is_admin() ) {
+			$hook = "admin_enqueue_scripts";
+		}
+
+		add_action( $hook, function () use ( $in_footer, $version, $dep, $src, $file_id ) {
 			wp_enqueue_script(
 				$file_id,
 				$src,
@@ -165,7 +171,14 @@ trait Assets {
 		if ( ! $version ) {
 			$version = $this->version;
 		}
-		add_action( "wp_enqueue_scripts", function () use ( $media, $version, $dep, $src, $file_id ) {
+
+		$hook = "wp_enqueue_scripts";
+
+		if ( is_admin() ) {
+			$hook = "admin_enqueue_scripts";
+		}
+
+		add_action( $hook, function () use ( $media, $version, $dep, $src, $file_id ) {
 			wp_register_style(
 				$file_id,
 				$src,

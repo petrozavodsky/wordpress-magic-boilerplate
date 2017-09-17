@@ -17,7 +17,7 @@ class MyClass {
 	function __construct( $state ) {
 		$this->state     = $state;
 		$this->base_name = $state->base_name;
-		add_action( "get_header", [ this, "router" ] );
+		add_action( "get_header", [ $this, "router" ] );
 
 	}
 

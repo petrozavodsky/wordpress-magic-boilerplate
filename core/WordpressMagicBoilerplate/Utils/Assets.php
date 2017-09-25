@@ -90,10 +90,12 @@ trait Assets {
 	public function registerJs( $handle, $in_footer = false, $dep = [], $version = false, $src = false ) {
 		$this->basename_helper();
 		if ( ! $src ) {
-			$min ="";
-			if ( $this->min && ( defined('CONCATENATE_SCRIPTS') && CONCATENATE_SCRIPTS == true ) ) {
-				$min= ".min";
+        		$min= ".min";
+
+			if(( defined('CONCATENATE_SCRIPTS') && CONCATENATE_SCRIPTS === false) || $this->min === false  ){
+				$min= '';
 			}
+			
 			$src     = $this->plugin_url( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {

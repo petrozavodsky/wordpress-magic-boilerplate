@@ -2,6 +2,7 @@
 
 namespace WordpressMagicBoilerplate\Widgets;
 
+use WordpressMagicBoilerplate;
 use WP_Widget;
 
 class MagicWidget extends WP_Widget {
@@ -9,6 +10,7 @@ class MagicWidget extends WP_Widget {
 	private $suffix = " - MagicWidget";
 
 	function __construct() {
+		$this->textdomain =WordpressMagicBoilerplate::$textdomine;
 		$className = get_called_class();
 		$className = str_replace( "\\", '-', $className );
 		parent::__construct(

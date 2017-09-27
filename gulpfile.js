@@ -76,7 +76,7 @@ gulp.task('i18n', function () {
     return gulp.src(plugin_src.lang.src)
         .pipe(plugins.sort())
         .pipe(plugins.wpPot({
-            package: 'Example project'
+            package: path.basename(__dirname)
         }))
         .pipe(plugins.rename({
             basename: path.basename(__dirname),

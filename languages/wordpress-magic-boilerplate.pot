@@ -1,8 +1,8 @@
-# Copyright (C) 2017 Example project
-# This file is distributed under the same license as the Example project package.
+# Copyright (C) 2017 wordpress-magic-boilerplate
+# This file is distributed under the same license as the wordpress-magic-boilerplate package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Example project\n"
+"Project-Id-Version: wordpress-magic-boilerplate\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

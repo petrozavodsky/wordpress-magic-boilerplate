@@ -2,7 +2,9 @@ const gulp = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     plugins = gulpLoadPlugins(),
     sourcemaps = require('gulp-sourcemaps'),
-    del = require('del');
+    del = require('del'),
+    path = require('path');
+
 
 const plugin_src = {
     js: [
@@ -14,12 +16,19 @@ const plugin_src = {
         'public/css/*.less',
         'public/css/vendor/**/*.less'
     ],
-    cssMaps:[
+    cssMaps: [
         'public/css/maps/*'
     ],
     images: [
         'public/images/**/*.svg'
-    ]
+    ],
+    lang: {
+        src: [
+            '**/*.php',
+            '!vendor/**/*.php'
+        ],
+        dest: './languages/',
+    }
 };
 
 gulp.task('js', function () {
@@ -39,7 +48,6 @@ gulp.task('js', function () {
         .pipe(plugins.notify({message: 'Скрипты плагина собрались'}));
 });
 
-
 gulp.task('css', function () {
     return gulp.src(plugin_src.css)
         .pipe(sourcemaps.init())
@@ -54,7 +62,7 @@ gulp.task('css', function () {
         .pipe(plugins.notify({message: 'Стили плагина собрались'}));
 });
 
-gulp.task('images', function() {
+gulp.task('images', function () {
 
     gulp.src(plugin_src.images)
         .pipe(plugins.svgo())
@@ -64,7 +72,21 @@ gulp.task('images', function() {
         .pipe(plugins.notify({message: 'SVG оптимизированы'}));
 });
 
-gulp.task('clean', function(cb) {
+gulp.task('i18n', function () {
+    return gulp.src(plugin_src.lang.src)
+        .pipe(plugins.sort())
+        .pipe(plugins.wpPot({
+            package: 'Example project'
+        }))
+        .pipe(plugins.rename({
+            basename: path.basename(__dirname),
+            extname: ".pot"
+        }))
+        .pipe(gulp.dest(plugin_src.lang.dest));
+
+});
+
+gulp.task('clean', function (cb) {
     del(plugin_src.cssMaps, cb);
 });
 
@@ -86,4 +108,4 @@ gulp.task('watch', function () {
         });
 });
 
-gulp.task('default', ['clean', 'css', 'js', 'watch']);
+gulp.task('default', ['clean', 'css', 'js', 'i18n', 'watch']);

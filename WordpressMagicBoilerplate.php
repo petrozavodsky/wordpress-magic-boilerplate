@@ -38,11 +38,10 @@ class WordpressMagicBoilerplate extends Wrap {
 				'description' => 'Boilerplate description'
 			]
 		);
+
 	}
 
-
 }
-
 
 function WordpressMagicBoilerplate__init() {
 	new WordpressMagicBoilerplate();

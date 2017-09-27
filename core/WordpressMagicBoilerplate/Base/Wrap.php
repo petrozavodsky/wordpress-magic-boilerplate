@@ -41,13 +41,16 @@ class Wrap {
 			return $this->url();
 		}
 
+		if ( $name == 'plugin_text_domain' ) {
+			return $this->get_text_domain();
+		}
+
 		if ( array_key_exists( $name, $this->defaults_vars ) ) {
 			return $this->defaults_vars[ $name ];
 		}
 
 		return null;
 	}
-
 
 	/**
 	 * @return string
@@ -97,14 +100,28 @@ class Wrap {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function get_text_domain() {
+		$string = plugin_basename( __FILE__ );
+		$array  = explode( '/', $string );
+		$path   = array_shift( $array );
+
+		return $path;
+	}
+
+	/**
 	 *
 	 * @return bool True on success, false on failure.
 	 */
-	function setTextdomain($domine = false) {
-		if(!$domine){
+	function setTextdomain( $domine = false ) {
+		if ( ! $domine ) {
 			$domine = $this->base_name;
 		}
-		return load_textdomain( $domine, $this->plugin_path . "languages/$this->base_name-" . get_locale() . '.mo' );
+
+		load_textdomain( $domine, $this->plugin_path . "languages/{$this->plugin_text_domain}-" . get_locale() . '.mo' );
+
+		return $domine;
 	}
 
 

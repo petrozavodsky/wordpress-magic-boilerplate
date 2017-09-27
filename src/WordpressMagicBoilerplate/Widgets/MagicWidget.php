@@ -10,14 +10,14 @@ class MagicWidget extends WP_Widget {
 	private $suffix = " - MagicWidget";
 
 	function __construct() {
-		$this->textdomain =WordpressMagicBoilerplate::$textdomine;
-		$className = get_called_class();
-		$className = str_replace( "\\", '-', $className );
+		$this->textdomain = WordpressMagicBoilerplate::$textdomine;
+		$className        = get_called_class();
+		$className        = str_replace( "\\", '-', $className );
 		parent::__construct(
 			$className,
-			__( "My widget {$this->suffix}", $this->textdomain ),
+			__( "My widget ", $this->textdomain ) . $this->suffix,
 			[
-				'description' => __( "My widget {$this->suffix}", $this->textdomain )
+				'description' => __( "My widget", $this->textdomain ) . $this->suffix
 			]
 		);
 	}
@@ -36,7 +36,7 @@ class MagicWidget extends WP_Widget {
 
 
 	public function form( $instance ) {
-		echo '<p class="no-options-widget">' . __( 'There are no options for this widget.' ) . '</p>';
+		echo '<p class="no-options-widget">' . __( 'There are no options for this widget.', $this->textdomain ) . '</p>';
 
 		return 'noform';
 	}

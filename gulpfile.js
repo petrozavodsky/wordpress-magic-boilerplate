@@ -3,8 +3,9 @@ const gulp = require('gulp'),
     plugins = gulpLoadPlugins(),
     sourcemaps = require('gulp-sourcemaps'),
     del = require('del'),
-    path = require('path');
-
+    path = require('path'),
+    imageminJpegRecompress = require('imagemin-jpeg-recompress'),
+    imageminPngquant = require('imagemin-pngquant');
 
 const plugin_src = {
     js: [
@@ -20,7 +21,10 @@ const plugin_src = {
         'public/css/maps/*'
     ],
     images: [
-        'public/images/**/*.svg'
+        'public/images/**/*.svg',
+        'public/images/**/*.png',
+        'public/images/**/*.jpeg',
+        'public/images/**/*.jpg'
     ],
     lang: {
         src: [
@@ -63,13 +67,22 @@ gulp.task('css', function () {
 });
 
 gulp.task('images', function () {
-
-    gulp.src(plugin_src.images)
-        .pipe(plugins.svgo())
+    return gulp.src(plugin_src.images)
+        .pipe(plugins.plumber())
+        .pipe(plugins.imagemin([
+            plugins.imagemin.gifsicle({interlaced: true}),
+            imageminJpegRecompress({
+                progressive: true,
+                max: 80,
+                min: 70
+            }),
+            imageminPngquant({quality: '80'}),
+            plugins.imagemin.svgo({plugins: [{removeViewBox: true}]})
+        ]))
         .pipe(gulp.dest(function (file) {
             return file.base;
         }))
-        .pipe(plugins.notify({message: 'SVG оптимизированы'}));
+        .pipe(plugins.notify({message: 'Изображения оптимизированы'}));
 });
 
 gulp.task('i18n', function () {
@@ -108,4 +121,4 @@ gulp.task('watch', function () {
         });
 });
 
-gulp.task('default', ['clean', 'css', 'js', 'i18n', 'watch']);
+gulp.task('default', ['clean', 'css', 'js', 'i18n', 'watch', 'images']);

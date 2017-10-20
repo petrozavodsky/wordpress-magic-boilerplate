@@ -1,43 +1,33 @@
 {
-  "name": "wordpress-magic-boilerplate",
-  "version": "1.0.0",
-  "description": "Wordpress Magic Boilerplate plugin",
-  "main": "index.js",
+  "name": "brodude-next",
+  "version": "5.0.0",
+  "description": "WordPress theme gulp tasks",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/petrozavodsky/wordpress-magic-boilerplate.git"
-  },
-  "keywords": [
-    "Wordpress",
-    "plugin",
-    "frontent",
-    "builder"
-  ],
   "author": "petrozavodsky",
-  "license": "SEE LICENSE IN LICENSE",
-  "bugs": {
-    "url": "https://github.com/petrozavodsky/wordpress-magic-boilerplate/issues"
-  },
-  "homepage": "https://github.com/petrozavodsky/wordpress-magic-boilerplate#readme",
+  "license": "ISC",
   "devDependencies": {
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "del": "^3.0.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-css-url-adjuster": "^0.2.3",
     "gulp-csso": "^3.0.0",
-    "gulp-folders": "^1.1.0",
-    "gulp-less": "^3.3.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-less": "^3.3.2",
     "gulp-load-plugins": "^1.5.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-svgo": "^1.0.3",
-    "gulp-uglify": "^2.1.2",
-    "gulp-wp-pot": "^2.0.6",
-    "path": "^0.12.7"
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-svgo": "^1.2.5",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-pngquant": "^5.0.1",
+    "streamqueue": "^1.1.1",
+    "svgo": "^0.7.2"
   }
 }

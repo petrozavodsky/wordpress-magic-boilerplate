@@ -39,8 +39,7 @@ gulp.task('js', function () {
     return gulp.src(plugin_src.js)
         .pipe(plugins.plumber())
         .pipe(plugins.uglify({
-            compress: true,
-            preserveComments: 'all'
+            compress: true
         }))
         .pipe(plugins.rename({
             extname: ".js",

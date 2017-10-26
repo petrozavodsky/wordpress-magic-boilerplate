@@ -1,5 +1,5 @@
 {
-  "name": "brodude-next",
+  "name": "wordpress-magic-boilerplate",
   "version": "5.0.0",
   "description": "WordPress theme gulp tasks",
   "main": "gulpfile.js",

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once( "includes/Autoloader.php" );
+require_once( plugin_dir_path( __FILE__ )."includes/Autoloader.php" );
 
 use WordpressMagicBoilerplate\Autoloader;
 

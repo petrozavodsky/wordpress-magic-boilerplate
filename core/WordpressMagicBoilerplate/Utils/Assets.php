@@ -149,7 +149,7 @@ trait Assets {
 		$handle = $this->registerJs( $handle, $position, $dep, $version, $src );
 		add_action( $position, function () use ( $in_footer, $handle, $src, $dep, $version ) {
 			wp_enqueue_script( $handle, $src, $dep, $version, $in_footer );
-		}, 20 );
+		} );
 
 		return $handle;
 	}
@@ -217,7 +217,7 @@ trait Assets {
 		$handle = $this->registerCss( $handle, $dep, $version, $src, $media );
 		add_action( $position, function () use (  $handle ) {
 			wp_enqueue_style( $handle );
-		}, 20 );
+		});
 
 		return $handle;
 	}

@@ -1,7 +1,7 @@
 {
   "name": "wordpress-magic-boilerplate",
   "version": "5.0.0",
-  "description": "WordPress theme gulp tasks",
+  "description": "WordPress plugin gulp tasks",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +28,7 @@
     "gulp-uglify": "^3.0.0",
     "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-pngquant": "^5.0.1",
+    "sort": "0.0.3",
     "streamqueue": "^1.1.1",
     "svgo": "^0.7.2"
   }

@@ -23,12 +23,13 @@
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-svgo": "^1.2.5",
     "gulp-uglify": "^3.0.0",
+    "gulp-wp-pot": "^2.2.0",
     "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-pngquant": "^5.0.1",
-    "sort": "0.0.3",
     "streamqueue": "^1.1.1",
     "svgo": "^0.7.2"
   }

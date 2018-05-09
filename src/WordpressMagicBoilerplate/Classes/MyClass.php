@@ -14,7 +14,7 @@ class MyClass {
 	 *
 	 * @param object $state
 	 */
-	function __construct( $state ) {
+	public function __construct( $state ) {
 		$this->state     = $state;
 		$this->base_name = $state->base_name;
 		add_action( "get_header", [ $this, "router" ] );

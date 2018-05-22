@@ -90,5 +90,15 @@ abstract class ActivateShortcode {
 	 */
 	abstract function base( $attrs, $content, $tag );
 
+	/**
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	protected function trim_carriage_return( $string ) {
+		$string =  str_replace( [ "\r", "\n" ], '', $string );
+
+		return strval($string);
+	}
 
 }

@@ -5,7 +5,11 @@ Plugin Name: Wordpress Magic Boilerplate plugin
 Plugin URI: http://alkoweb.ru
 Author: Petrozavodsky
 Author URI: http://alkoweb.ru
+Text Domain: WordpressMagicBoilerplate
+Domain Path: /languages
 Requires PHP: 7.0
+Version: 1.0.0-rc.3
+License: GPLv3
 */
 	
 if ( ! defined( 'ABSPATH' ) ) {

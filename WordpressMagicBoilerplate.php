@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Wordpress Magic Boilerplate plugin
 Plugin URI: http://alkoweb.ru

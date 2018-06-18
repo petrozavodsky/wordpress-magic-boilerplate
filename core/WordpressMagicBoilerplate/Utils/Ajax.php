@@ -18,8 +18,8 @@ abstract class Ajax {
 	 */
 	function __construct( $action_name, $type = 'front' ) {
 
-		$this->ajax_url        = $this->create_ajax_url();
-		$this->ajax_url_action = $this->create_ajax_url_action( $action_name );
+		$this->ajax_url        = $this->createAjaxUrl();
+		$this->ajax_url_action = $this->createAjaxUrlAction( $action_name );
 
 		$this->$type( $action_name );
 
@@ -31,7 +31,7 @@ abstract class Ajax {
 	/**
 	 * @return string
 	 */
-	protected function create_ajax_url() {
+	protected function createAjaxUrl() {
 		return admin_url( 'admin-ajax.php' );
 	}
 
@@ -40,7 +40,7 @@ abstract class Ajax {
 	 *
 	 * @return string
 	 */
-	protected function create_ajax_url_action( $action ) {
+	protected function createAjaxUrlAction( $action ) {
 		return add_query_arg( [ 'action' => $action ], $this->ajax_url );
 	}
 
@@ -50,7 +50,7 @@ abstract class Ajax {
 	 * @param array $data
 	 *
 	 */
-	public function vars_ajax( $handle, $data ) {
+	public function varsAjax( $handle, $data ) {
 
 		add_action( 'wp_enqueue_scripts', function () use ( $data, $handle ) {
 			wp_localize_script(
@@ -79,7 +79,7 @@ abstract class Ajax {
 		$this->callback( $request );
 	}
 
-	public function payload_action() {
+	public function payloadAction() {
 		$request = $_REQUEST;
 		$this->callback( $request );
 		die;

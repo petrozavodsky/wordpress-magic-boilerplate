@@ -25,7 +25,7 @@ class AjaxOut extends Ajax {
 			[ 'jquery' ]
 		);
 
-		$this->vars_ajax(
+		$this->varsAjax(
 			$handle,
 			[
 				'ajax_url'        => $this->ajax_url,

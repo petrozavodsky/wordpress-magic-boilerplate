@@ -9,7 +9,7 @@ trait WidgetHelper {
 	public function addWidgetAssets() {
 		add_action( "wp", function () {
 			if ( ! is_active_widget( 0, $this->id, $this->id_base ) === false ) {
-				$this->add_js_css($this->id_base);
+				$this->addJsCss($this->id_base);
 			}
 		} );
 	}

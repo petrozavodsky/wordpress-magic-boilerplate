@@ -42,7 +42,7 @@ class Wrap {
 		}
 
 		if ( $name == 'plugin_text_domain' ) {
-			return $this->get_text_domain();
+			return $this->getTextDomain();
 		}
 
 		if ( array_key_exists( $name, $this->defaults_vars ) ) {
@@ -102,7 +102,7 @@ class Wrap {
 	/**
 	 * @return string
 	 */
-	public function get_text_domain() {
+	public function getTextDomain() {
 		$string = plugin_basename( __FILE__ );
 		$array  = explode( '/', $string );
 		$path   = array_shift( $array );

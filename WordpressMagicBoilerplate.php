@@ -25,7 +25,7 @@ new Autoloader( __FILE__, 'WordpressMagicBoilerplate' );
 use WordpressMagicBoilerplate\Base\Wrap;
 
 class WordpressMagicBoilerplate extends Wrap {
-	public $version = '1.0.0-rc.3';
+	public $version = '1.0.0';
 	public static $textdomine;
 
 	function __construct() {

@@ -5,6 +5,7 @@ namespace WordpressMagicBoilerplate\Classes;
 use WordpressMagicBoilerplate\Utils\Assets;
 
 class MyClass {
+
 	use Assets;
 	private $state;
 	private $post_type = 'post';

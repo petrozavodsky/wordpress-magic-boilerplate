@@ -6,6 +6,7 @@ use WordpressMagicBoilerplate;
 use WP_Widget;
 
 class MagicWidget extends WP_Widget {
+
 	private $textdomain = __NAMESPACE__;
 	private $suffix = " - MagicWidget";
 

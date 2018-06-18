@@ -6,6 +6,7 @@ use WordpressMagicBoilerplate\Utils\ActivateShortcode;
 use WordpressMagicBoilerplate\Utils\Assets;
 
 class Shortcode extends ActivateShortcode {
+
 	use Assets;
 
 	protected $js = false;

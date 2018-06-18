@@ -6,6 +6,7 @@ use WordpressMagicBoilerplate\Utils\Ajax;
 use WordpressMagicBoilerplate\Utils\Assets;
 
 class AjaxOut extends Ajax {
+
 	use Assets;
 
 	public function init( $action_name ) {

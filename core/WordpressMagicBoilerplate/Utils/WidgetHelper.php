@@ -14,7 +14,7 @@ trait WidgetHelper {
 		} );
 	}
 
-	public function add_js_css($base){
+	public function addJsCss($base){
 		if ( $this->css ) {
 			$this->addCss( $base, "header" );
 		}

@@ -3,6 +3,7 @@
 namespace WordpressMagicBoilerplate\Base;
 
 class Wrap {
+
 	public $version = '1.0.0';
 	public $css_patch = "public/css/";
 	public $js_patch = "public/js/";

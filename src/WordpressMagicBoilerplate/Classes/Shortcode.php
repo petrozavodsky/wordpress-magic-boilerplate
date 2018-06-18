@@ -21,9 +21,10 @@ class Shortcode extends ActivateShortcode {
 	}
 
 	function base( $attrs, $content, $tag ) {
-		$json = json_encode( $attrs );
+
 		$res  = "";
-		$res  .= "<pre>{$json}</pre>";
+		$res  .= "<strong>{$attrs['title']}</strong>";
+        $res  .= "<p>{$attrs['description']}</p>";
 
 		return $res;
 	}

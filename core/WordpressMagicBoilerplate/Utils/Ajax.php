@@ -2,7 +2,6 @@
 
 namespace WordpressMagicBoilerplate\Utils;
 
-
 abstract class Ajax {
 
 	protected $ajax_url;

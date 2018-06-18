@@ -58,8 +58,8 @@ abstract class ActivateShortcode {
 	 * @return mixed
 	 */
 	public function wrap( $attrs, $content, $tag ) {
-		$content = $this->attr_checker( $content );
-		$tag     = $this->attr_checker( $tag );
+		$content = $this->attrChecker( $content );
+		$tag     = $this->attrChecker( $tag );
 
 		if ( count( $this->attrs ) > 0 ) {
 			$attrs = shortcode_atts( $this->attrs, $attrs );
@@ -73,7 +73,7 @@ abstract class ActivateShortcode {
 	 *
 	 * @return bool|string
 	 */
-	private function attr_checker( $val ) {
+	private function attrChecker( $val ) {
 		if ( $val == '' ) {
 			return false;
 		}

@@ -14,11 +14,11 @@ trait Assets {
 	public function __get( $name ) {
 
 		if ( $name == 'base_name' ) {
-			return $this->basename_helper();
+			return $this->basenameHelper();
 		}
 
 		if ( $name == 'file' ) {
-			return $this->plugin_dir();
+			return $this->pluginDir();
 		}
 
 		if ( $name == 'url' ) {
@@ -43,7 +43,7 @@ trait Assets {
 		return trailingslashit( $plugins.$path );
 	}
 
-	public function basename_helper() {
+	public function basenameHelper() {
 		$array = explode( '\\', __NAMESPACE__ );
 		$id    = array_shift( $array );
 
@@ -53,7 +53,7 @@ trait Assets {
 	/**
 	 * @return string
 	 */
-	public function plugin_dir() {
+	public function pluginDir() {
 		$string = plugin_basename( __FILE__ );
 		$array  = explode( '/', $string );
 		$path   = array_shift( $array );
@@ -66,7 +66,7 @@ trait Assets {
 	 *
 	 * @return string
 	 */
-	public function plugin_url( $val = false ) {
+	public function pluginUrl( $val = false ) {
 		$string      = plugin_basename( __FILE__ );
 		$array       = explode( '/', $string );
 		$path        = array_shift( $array );
@@ -88,7 +88,7 @@ trait Assets {
 	 * @return string
 	 */
 	public function registerJs( $handle, $in_footer = false, $dep = [], $version = false, $src = false ) {
-		$this->basename_helper();
+		$this->basenameHelper();
 		if ( ! $src ) {
         		$min= ".min";
 
@@ -96,7 +96,7 @@ trait Assets {
 				$min= '';
 			}
 			
-			$src     = $this->plugin_url( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );
+			$src     = $this->pluginUrl( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;
@@ -165,7 +165,7 @@ trait Assets {
 	 */
 	public function registerCss( $handle, $dep = [], $version = false, $src = false, $media = 'all' ) {
 		if ( ! $src ) {
-			$src     = $this->plugin_url( "{$this->css_patch}{$this->base_name}-{$handle}.css" );
+			$src     = $this->pluginUrl( "{$this->css_patch}{$this->base_name}-{$handle}.css" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;

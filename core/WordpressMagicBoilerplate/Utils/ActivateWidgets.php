@@ -2,7 +2,6 @@
 
 namespace WordpressMagicBoilerplate\Utils;
 
-
 class ActivateWidgets {
 
 	use Assets;

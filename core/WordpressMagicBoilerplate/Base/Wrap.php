@@ -21,20 +21,20 @@ class Wrap {
 	public function __get( $name ) {
 
 		if ( $name == 'base_name' ) {
-			return $this->basename_helper();
+			return $this->basenameHelper();
 		}
 
 		if ( $name == 'space' ) {
-			return $this->basename_helper();
+			return $this->basenameHelper();
 		}
 
 		if ( $name == 'prefix' ) {
-			return '_' . $this->basename_helper();
+			return '_' . $this->basenameHelper();
 
 		}
 
 		if ( $name == 'plugin_path' ) {
-			return $this->plugin_dir();
+			return $this->pluginDir();
 		}
 
 		if ( $name == 'plugin_url' ) {
@@ -55,7 +55,7 @@ class Wrap {
 	/**
 	 * @return string
 	 */
-	public function basename_helper() {
+	public function basenameHelper() {
 		$array = explode( '\\', __NAMESPACE__ );
 		$id    = array_shift( $array );
 
@@ -65,7 +65,7 @@ class Wrap {
 	/**
 	 * @return string
 	 */
-	public function plugin_dir() {
+	public function pluginDir() {
 		$string = plugin_basename( __FILE__ );
 		$array  = explode( '/', $string );
 		$path   = array_shift( $array );

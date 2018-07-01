@@ -7,7 +7,7 @@ Author URI: http://alkoweb.ru
 Text Domain: WordpressMagicBoilerplate
 Domain Path: /languages
 Requires PHP: 7.0
-Version: 1.0.0-rc.3
+Version: 1.0.0
 License: GPLv3
 */
 	

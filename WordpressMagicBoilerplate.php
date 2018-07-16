@@ -17,10 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once( plugin_dir_path( __FILE__ )."includes/Autoloader.php" );
 
+if(file_exists(plugin_dir_path(__FILE__)."vendor/autoload.php")) {
+    require_once(plugin_dir_path(__FILE__) . "vendor/autoload.php");
+}
+
 use WordpressMagicBoilerplate\Autoloader;
 
 new Autoloader( __FILE__, 'WordpressMagicBoilerplate' );
-
 
 use WordpressMagicBoilerplate\Base\Wrap;
 

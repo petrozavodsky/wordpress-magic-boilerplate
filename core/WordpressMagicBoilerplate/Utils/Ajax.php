@@ -51,13 +51,20 @@ abstract class Ajax {
 	 */
 	public function varsAjax( $handle, $data ) {
 
-		add_action( 'wp_enqueue_scripts', function () use ( $data, $handle ) {
+        $actions = [
+            'login_enqueue_scripts',
+            'wp_enqueue_scripts',
+            'admin_enqueue_scripts'
+        ];
+
+        foreach ($actions as $action)
+
+		add_action( $action, function () use ( $data, $handle ) {
 			wp_localize_script(
 				$handle,
 				str_replace( '-', '_', $handle . "__vars" ),
 				$data
 			);
-
 		}, 80 );
 
 	}

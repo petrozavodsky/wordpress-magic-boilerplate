@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Wordpress Magic Boilerplate plugin
+Plugin Name: WordpressMagicBoilerplate plugin
 Plugin URI: http://alkoweb.ru
 Author: Petrozavodsky
 Author URI: http://alkoweb.ru

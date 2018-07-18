@@ -28,6 +28,7 @@
 
 ## Установка
 Понадобится перейти в каталог плагинов вашего сайта обычно это  
+
 `wp-content/plugins/` 
 Далее клонируем  этот репозиторий 
 `git@github.com:petrozavodsky/wordpress-magic-boilerplate.git` 

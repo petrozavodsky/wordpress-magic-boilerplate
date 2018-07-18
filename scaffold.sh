@@ -15,6 +15,9 @@ find . -depth -type f \( -name "*.js" -o -name "*.php" -o -name "*.css" -o -name
 
 find . -depth -type f \( -name "*.js" -o -name "*.php" -o -name "*.css" -o -name "*.less" -o -name "*.json" -o -name "*.pot" \) -exec sed -i -r    's/wordpress-magic-boilerplate/'$1'/g' {} \;
 
+# Hack for MaC
+find . -type f -name '*-r' -delete
+
 rm -rf .git
 
 mv -f $(pwd) "$(dirname "$(pwd)")/$1"

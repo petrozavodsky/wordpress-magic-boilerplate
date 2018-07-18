@@ -27,16 +27,16 @@
 Документации на английском скорее всего не будет никогда.
 
 ## Установка
-Понадобится перейти в каталог плагинов вашего сайта обычно это 
-`wp-content/plugins/`
-Далее клонируем  этот репозиторий
-`git@github.com:petrozavodsky/wordpress-magic-boilerplate.git`
-и переходим в каталог
-`wordpress-magic-boilerplate`
-Выдаем права на выполнение конфигуратора
-`chmod +x scaffold.sh`
-Придумываем имя будущего плагина (например MyPlugin) и  исполняем скрипт 
-`./scaffold.sh MyPlugin`
+Понадобится перейти в каталог плагинов вашего сайта обычно это  
+`wp-content/plugins/` 
+Далее клонируем  этот репозиторий 
+`git@github.com:petrozavodsky/wordpress-magic-boilerplate.git` 
+и переходим в каталог 
+`wordpress-magic-boilerplate` 
+Выдаем права на выполнение конфигуратора 
+`chmod +x scaffold.sh` 
+Придумываем имя будущего плагина (например MyPlugin) и  исполняем скрипт  
+`./scaffold.sh MyPlugin` 
 Бинго ! Скелет будущего плагина создан, можно начинать разработку. 
 
 ## Фитчи

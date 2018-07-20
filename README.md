@@ -44,6 +44,8 @@
 
 Бинго ! Скелет будущего плагина создан, можно начинать разработку. 
 
+[Подробнее об установке](https://github.com/petrozavodsky/wordpress-magic-boilerplate/wiki/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0)
+
 ## Фитчи
 
  - [PSR-4 автозагрузка](http://www.php-fig.org/psr/psr-4/) классов;

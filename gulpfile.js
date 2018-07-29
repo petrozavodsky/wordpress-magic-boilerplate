@@ -121,3 +121,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['clean', 'css', 'js', 'i18n', 'watch', 'images']);
+

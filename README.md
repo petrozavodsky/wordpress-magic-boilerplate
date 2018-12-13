@@ -1,7 +1,7 @@
 
 
 
-ⓦ WordPress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![WordPress](https://img.shields.io/badge/wordpress-4.9.7tested-brightgreen.svg)](https://ru.wordpress.org/releases/) [![built with gulp](https://img.shields.io/badge/build%20with-gulp-FA234B.svg)](http://gulpjs.com)
+ⓦ WordPress Magic Boilerplate [![AUR](https://img.shields.io/aur/license/yaourt.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![WordPress](https://img.shields.io/badge/wordpress-5.0.1tested-brightgreen.svg)](https://ru.wordpress.org/releases/) [![built with gulp](https://img.shields.io/badge/build%20with-gulp-FA234B.svg)](http://gulpjs.com)
 =======================
 
 

@@ -31,7 +31,7 @@ class WordpressMagicBoilerplate extends Wrap {
 	public $version = '1.0.1';
 	public static $textdomine;
 
-	function __construct() {
+	public function __construct() {
 		self::$textdomine = $this->setTextdomain();
 
 		new \WordpressMagicBoilerplate\Classes\AjaxOut2();

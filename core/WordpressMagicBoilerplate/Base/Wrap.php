@@ -116,7 +116,7 @@ class Wrap {
 	 *
 	 * @return bool True on success, false on failure.
 	 */
-	function setTextdomain( $domine = false ) {
+	public function setTextdomain( $domine = false ) {
 		if ( ! $domine ) {
 			$domine = $this->base_name;
 		}

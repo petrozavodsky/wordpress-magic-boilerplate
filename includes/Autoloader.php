@@ -8,7 +8,7 @@ namespace WordpressMagicBoilerplate;
 		private $space;
 		private $file;
 
-		function __construct( $file, $className ) {
+		public function __construct( $file, $className ) {
 			$this->file  = $file;
 			$this->space = $className;
 			$this->autoload();
@@ -33,7 +33,7 @@ namespace WordpressMagicBoilerplate;
 		 * @param string $dir
 		 * @param mixed $space
 		 */
-		function addNamespaceObject( $dir, $space = false, $path = false ) {
+		public function addNamespaceObject( $dir, $space = false, $path = false ) {
 			$s = DIRECTORY_SEPARATOR;
 			if ( ! $space ) {
 				$space = $this->space;
@@ -52,7 +52,7 @@ namespace WordpressMagicBoilerplate;
 		/**
 		 * @return void
 		 */
-		function autoload() {
+		public function autoload() {
 			require_once( 'Autoload.php' );
 			$this->loader = new Autoload();
 			$this->loader->register();

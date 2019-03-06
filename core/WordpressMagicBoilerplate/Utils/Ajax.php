@@ -15,7 +15,7 @@ abstract class Ajax {
 	 * @param string $type
 	 *
 	 */
-	function __construct( $action_name, $type = 'front' ) {
+	public function __construct( $action_name, $type = 'front' ) {
 
 		$this->ajax_url        = $this->createAjaxUrl();
 		$this->ajax_url_action = $this->createAjaxUrlAction( $action_name );

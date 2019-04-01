@@ -24,15 +24,15 @@ class MagicWidget extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-
-		echo $args['before_widget'];
+ 
+                echo (isset($args['before_widget'])? $args['before_widget']:'');
 		?>
         <div>
             <h1>Magic</h1>
         </div>
 
 		<?php
-		echo $args['after_widget'];
+		echo (isset($args['after_widget'])? $args['after_widget']:'');
 	}
 
 

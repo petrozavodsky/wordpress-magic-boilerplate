@@ -53,7 +53,7 @@ class MyClass {
 				"Single-script",
 				"footer",
 				[ "jquery" ],
-				"1.0.2"
+				"1.0.3"
 			);
 		}
 	}

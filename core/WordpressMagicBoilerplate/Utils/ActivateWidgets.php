@@ -6,7 +6,7 @@ class ActivateWidgets {
 
 	use Assets;
 
-	private $version = '1.0.2';
+	private $version = '1.0.3';
 	private $space = false;
 	private $file;
 	private $css_patch = "public/css/";

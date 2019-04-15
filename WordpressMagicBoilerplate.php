@@ -7,7 +7,7 @@ Author URI: http://alkoweb.ru
 Text Domain: WordpressMagicBoilerplate
 Domain Path: /languages
 Requires PHP: 7.0
-Version: 1.0.1
+Version: 1.0.2
 License: GPLv3
 */
 	
@@ -28,7 +28,7 @@ new Autoloader( __FILE__, 'WordpressMagicBoilerplate' );
 use WordpressMagicBoilerplate\Base\Wrap;
 
 class WordpressMagicBoilerplate extends Wrap {
-	public $version = '1.0.1';
+	public $version = '1.0.2';
 	public static $textdomine;
 
 	public function __construct() {

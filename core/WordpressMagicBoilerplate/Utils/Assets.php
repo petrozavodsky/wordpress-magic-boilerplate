@@ -4,6 +4,8 @@ namespace WordpressMagicBoilerplate\Utils;
 
 trait Assets {
 
+	private $loginPage = false;
+
 	private $defaults_vars = [
 		'css_patch' => "public/css/",
 		'js_patch'  => "public/js/",
@@ -180,6 +182,10 @@ trait Assets {
 			$hook = "admin_enqueue_scripts";
 		}
 
+		if($this->loginPage){
+			$hook = 'login_enqueue_scripts';
+		}
+
 		add_action( $hook, function () use ( $media, $version, $dep, $src, $file_id ) {
 			wp_register_style(
 				$file_id,
@@ -212,6 +218,7 @@ trait Assets {
 			 $position = 'admin_enqueue_scripts';
 		} elseif ($position == 'login' || $position == 'login-page'){
 			$position = 'login_enqueue_scripts';
+			$this->loginPage = true;
 		}
 
 		$handle = $this->registerCss( $handle, $dep, $version, $src, $media );

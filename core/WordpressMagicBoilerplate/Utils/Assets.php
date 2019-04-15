@@ -9,7 +9,7 @@ trait Assets {
 	private $defaults_vars = [
 		'css_patch' => "public/css/",
 		'js_patch'  => "public/js/",
-		'version'   => "1.0.0",
+		'version'   => "1.0.2",
 		'min'       => true
 	];
 

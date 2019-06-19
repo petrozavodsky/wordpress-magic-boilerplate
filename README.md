@@ -34,7 +34,7 @@
 `git@github.com:petrozavodsky/wordpress-magic-boilerplate.git` 
 
 И переходим в каталог:
-`wordpress-magic-boilerplate` 
+`cd wordpress-magic-boilerplate` 
 
 Выдаем права на выполнение конфигуратора:
 `chmod +x scaffold.sh`  

@@ -10,7 +10,7 @@ class AjaxOut extends Ajax {
 	use Assets;
 
 	public function init( $action_name ) {
-		$this->add_js_css( $action_name );
+		$this->addJsCss( $action_name );
 
 	}
 
@@ -19,7 +19,7 @@ class AjaxOut extends Ajax {
 		wp_send_json( $json );
 	}
 
-	private function add_js_css( $action ) {
+	private function addJsCss( $action ) {
 		$handle = $this->addJs(
 			$action,
 			'header',

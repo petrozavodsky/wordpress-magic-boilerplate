@@ -69,13 +69,13 @@ abstract class Ajax {
 
 	}
 
-	public function front( $action_name, $callback = 'payload_action' ) {
+	public function front( $action_name, $callback = 'payload' ) {
 		add_action( 'wp_ajax_' . $action_name, [ $this, $callback]  );
 		add_action( 'wp_ajax_nopriv_' . $action_name, [ $this, $callback ] );
 	}
 
 
-	public function admin( $action_name, $callback = 'payload_action' ) {
+	public function admin( $action_name, $callback = 'payload' ) {
 		add_action( 'wp_ajax_' . $action_name, [$this, $callback] );
 	}
 
@@ -83,12 +83,6 @@ abstract class Ajax {
 		$request = $_REQUEST;
 		unset( $request['action'] );
 		$this->callback( $request );
-	}
-
-	public function payloadAction() {
-		$request = $_REQUEST;
-		$this->callback( $request );
-		die;
 	}
 
 	abstract public function callback( $request );

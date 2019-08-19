@@ -12,7 +12,7 @@ class Shortcode extends ActivateShortcode {
 	protected $js = false;
 	protected $css = true;
 
-	function init( $tag, $attrs ) {
+	public function init( $tag, $attrs ) {
 		add_action( "template_redirect", function () use ( $tag ) {
 			global $wp_query;
 			if ( is_singular() && has_shortcode( $wp_query->post->post_content, $tag ) ) {
@@ -21,7 +21,7 @@ class Shortcode extends ActivateShortcode {
 		} );
 	}
 
-	function base( $attrs, $content, $tag ) {
+	public function base( $attrs, $content, $tag ) {
 
 		$res  = "";
 		$res  .= "<strong>{$attrs['title']}</strong>";

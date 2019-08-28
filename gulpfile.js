@@ -1,41 +1,41 @@
-const gulp = require('gulp'),
-    gulpLoadPlugins = require('gulp-load-plugins'),
+const gulp = require("gulp"),
+    gulpLoadPlugins = require("gulp-load-plugins"),
     plugins = gulpLoadPlugins(),
-    sourcemaps = require('gulp-sourcemaps'),
-    del = require('del'),
-    path = require('path'),
-    imageminJpegRecompress = require('imagemin-jpeg-recompress'),
-    imageminPngquant = require('imagemin-pngquant');
+    sourcemaps = require("gulp-sourcemaps"),
+    del = require("del"),
+    path = require("path"),
+    imageminJpegRecompress = require("imagemin-jpeg-recompress"),
+    imageminPngquant = require("imagemin-pngquant");
 
 const plugin_src = {
     js: [
-        'public/js/*.js',
-        '!public/js/*.min.js',
-        '!public/js/vendor/**/*.js'
+        "public/js/*.js",
+        "!public/js/*.min.js",
+        "!public/js/vendor/**/*.js"
     ],
     css: [
-        'public/css/*.less',
-        'public/css/vendor/**/*.less'
+        "public/css/*.less",
+        "public/css/vendor/**/*.less"
     ],
     cssMaps: [
-        'public/css/maps/*'
+        "public/css/maps/*"
     ],
     images: [
-        'public/images/**/*.svg',
-        'public/images/**/*.png',
-        'public/images/**/*.jpeg',
-        'public/images/**/*.jpg'
+        "public/images/**/*.svg",
+        "public/images/**/*.png",
+        "public/images/**/*.jpeg",
+        "public/images/**/*.jpg"
     ],
     lang: {
         src: [
-            '**/*.php',
-            '!vendor/**/*.php'
+            "**/*.php",
+            "!vendor/**/*.php"
         ],
-        dest: './languages/',
+        dest: "./languages/",
     }
 };
 
-gulp.task('js', function () {
+gulp.task("js", function () {
     return gulp.src(plugin_src.js)
         .pipe(plugins.plumber())
         .pipe(plugins.uglify({
@@ -48,24 +48,24 @@ gulp.task('js', function () {
         .pipe(gulp.dest(function (file) {
             return file.base;
         }))
-        .pipe(plugins.notify({message: 'Скрипты плагина собрались'}));
+        .pipe(plugins.notify({message: "Скрипты плагина собрались"}));
 });
 
-gulp.task('css', function () {
+gulp.task("css", function () {
     return gulp.src(plugin_src.css)
         .pipe(sourcemaps.init())
         .pipe(plugins.plumber())
         .pipe(plugins.less())
-        .pipe(plugins.autoprefixer(['ios_saf >= 6', 'last 3 versions']))
+        .pipe(plugins.autoprefixer(["ios_saf >= 6", "last 3 versions"]))
         .pipe(plugins.csso())
-        .pipe(sourcemaps.write('/maps'))
+        .pipe(sourcemaps.write("/maps"))
         .pipe(gulp.dest(function (file) {
             return file.base;
         }))
-        .pipe(plugins.notify({message: 'Стили плагина собрались'}));
+        .pipe(plugins.notify({message: "Стили плагина собрались"}));
 });
 
-gulp.task('images', function () {
+gulp.task("images", function () {
     return gulp.src(plugin_src.images)
         .pipe(plugins.plumber())
         .pipe(plugins.imagemin([
@@ -75,16 +75,16 @@ gulp.task('images', function () {
                 max: 80,
                 min: 70
             }),
-            imageminPngquant({quality: '80'}),
+            imageminPngquant({quality: "80"}),
             plugins.imagemin.svgo({plugins: [{removeViewBox: true}]})
         ]))
         .pipe(gulp.dest(function (file) {
             return file.base;
         }))
-        .pipe(plugins.notify({message: 'Изображения оптимизированы'}));
+        .pipe(plugins.notify({message: "Изображения оптимизированы"}));
 });
 
-gulp.task('i18n', function () {
+gulp.task("i18n", function () {
     return gulp.src(plugin_src.lang.src)
         .pipe(plugins.sort())
         .pipe(plugins.wpPot({
@@ -98,17 +98,17 @@ gulp.task('i18n', function () {
 
 });
 
-gulp.task('clean', function (cb) {
+gulp.task("clean", function (cb) {
     del(plugin_src.cssMaps, cb);
 });
 
-gulp.task('watch', function () {
+gulp.task("watch", function () {
 
     gulp.watch(
         plugin_src.js
         , function (event) {
             plugin_src.js = [event.path];
-            gulp.start('js');
+            gulp.start("js");
         }
     );
 
@@ -116,9 +116,9 @@ gulp.task('watch', function () {
         plugin_src.css
         , function (event) {
             plugin_src.css = [event.path];
-            gulp.start('css');
+            gulp.start("css");
         });
 });
 
-gulp.task('default', ['clean', 'css', 'js', 'i18n', 'watch', 'images']);
+gulp.task("default", ["clean", "css", "js", "i18n", "watch", "images"]);
 

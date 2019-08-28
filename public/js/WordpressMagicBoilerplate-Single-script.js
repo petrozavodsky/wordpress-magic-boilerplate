@@ -1,12 +1,12 @@
 var $ = jQuery.noConflict();
 
-var sd_cart_ajax_action = {
+var WordpressMagicBoilerplateSingleScript = {
     run: function () {
     }
 
 };
 
 $(document).ready(function () {
-    sd_cart_ajax_action.run();
+    WordpressMagicBoilerplateSingleScript.run();
 });
 

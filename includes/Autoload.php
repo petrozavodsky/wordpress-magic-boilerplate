@@ -72,9 +72,9 @@ class Autoload {
 
 			$relativeClass = substr( $class, $pos + 1 );
 
-			$mapped_file = $this->loadMappedFile( $prefix, $relativeClass );
-			if ( $mapped_file ) {
-				return $mapped_file;
+			$mappedFile = $this->loadMappedFile( $prefix, $relativeClass );
+			if ( $mappedFile ) {
+				return $mappedFile;
 			}
 			$prefix = rtrim( $prefix, '\\' );
 		}

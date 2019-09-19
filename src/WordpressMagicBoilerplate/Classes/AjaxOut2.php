@@ -45,7 +45,8 @@ class AjaxOut2 extends Ajax {
 	 */
 	public function callback( $request ) {
 		unset( $request['action'] );
-		var_dump( $request );
+		// Use
+		// var_dump( $request );
 		die;
 
 	}

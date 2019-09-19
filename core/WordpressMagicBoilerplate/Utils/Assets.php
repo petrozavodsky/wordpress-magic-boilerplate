@@ -135,10 +135,10 @@ trait Assets {
 	 * @return string
 	 */
 	public function addJs( $handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false ) {
-		$in_footer = false;
+		$inFooter = false;
 		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
 			$position  = "wp_footer";
-			$in_footer = true;
+			$inFooter = true;
 		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
 			 $position = "wp_head";
 		} elseif ($position == 'admin' || $position == 'admin_header'|| $position  ==  'admin_head'){
@@ -149,8 +149,8 @@ trait Assets {
 		}
 
 		$handle = $this->registerJs( $handle, $position, $dep, $version, $src );
-		add_action( $position, function () use ( $in_footer, $handle, $src, $dep, $version ) {
-			wp_enqueue_script( $handle, $src, $dep, $version, $in_footer );
+		add_action( $position, function () use ( $inFooter, $handle, $src, $dep, $version ) {
+			wp_enqueue_script( $handle, $src, $dep, $version, $inFooter );
 		} );
 
 		return $handle;

@@ -16,14 +16,14 @@ class AjaxOut2 extends Ajax {
 		$name = "AjaxOut2";
 
 		parent::__construct( $name );
-		$this->add_js_css( $name );
+		$this->addJsCss( $name );
 
 	}
 
 	/**
 	 * @param $name
 	 */
-	private function add_js_css( $name ) {
+	private function addJsCss($name ) {
 
 		$handle = $this->addJs(
 			$name,

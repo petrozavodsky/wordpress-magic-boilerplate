@@ -40,10 +40,11 @@ class ActivateWidgets {
 				if ( $currentFile == '.' or $currentFile == '..' ) {
 					continue;
 				}
-				$widget_name = basename( $currentFile, ".php" );
-				add_action( 'widgets_init', function () use ( $space, $widget_name ) {
-					register_widget( $class_name = "\\{$space}\\Widgets\\{$widget_name}" );
-					$this->addWidgetJsCss( $widget_name, $space );
+				$widgetName = basename( $currentFile, ".php" );
+				add_action( 'widgets_init', function () use ( $space, $widgetName ) {
+                    $className = "\\{$space}\\Widgets\\{$widgetName}";
+					register_widget( $className );
+					$this->addWidgetJsCss( $widgetName, $space );
 				} );
 			}
 			closedir( $dir );

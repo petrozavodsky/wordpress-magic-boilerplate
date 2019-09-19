@@ -168,9 +168,9 @@ trait Assets {
 	public function registerCss( $handle, $dep = [], $version = false, $src = false, $media = 'all' ) {
 		if ( ! $src ) {
 			$src     = $this->pluginUrl( "{$this->cssPatch}{$this->baseName}-{$handle}.css" );
-			$file_id = $this->baseName . "-" . $handle;
+			$fileID = $this->baseName . "-" . $handle;
 		} else {
-			$file_id = $handle;
+			$fileID = $handle;
 		}
 		if ( ! $version ) {
 			$version = $this->version;
@@ -186,9 +186,9 @@ trait Assets {
 			$hook = 'login_enqueue_scripts';
 		}
 
-		add_action( $hook, function () use ( $media, $version, $dep, $src, $file_id ) {
+		add_action( $hook, function () use ( $media, $version, $dep, $src, $fileID ) {
 			wp_register_style(
-				$file_id,
+				$fileID,
 				$src,
 				$dep,
 				$version,
@@ -196,7 +196,7 @@ trait Assets {
 			);
 		}, 10 );
 
-		return $file_id;
+		return $fileID;
 	}
 
 	/**

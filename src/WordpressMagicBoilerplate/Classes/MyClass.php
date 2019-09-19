@@ -8,7 +8,7 @@ class MyClass {
 
 	use Assets;
 	private $state;
-	private $post_type = 'post';
+	private $typePost = 'post';
 	private $baseName;
 
 	/**
@@ -40,7 +40,7 @@ class MyClass {
 		);
 
 		//page type rout
-		if ( is_singular( $this->post_type ) ) {
+		if ( is_singular( $this->typePost ) ) {
 
 			//Add auto url css
 			$this->addCss(

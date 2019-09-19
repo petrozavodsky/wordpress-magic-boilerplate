@@ -93,8 +93,8 @@ trait Assets {
 				$min= '';
 			}
 
-			$src     = $this->pluginUrl( "{$this->jsPatch}{$this->base_name}-{$handle}{$min}.js" );
-			$file_id = $this->base_name . "-" . $handle;
+			$src     = $this->pluginUrl( "{$this->jsPatch}{$this->baseName}-{$handle}{$min}.js" );
+			$file_id = $this->baseName . "-" . $handle;
 		} else {
 			$file_id = $handle;
 		}
@@ -167,8 +167,8 @@ trait Assets {
 	 */
 	public function registerCss( $handle, $dep = [], $version = false, $src = false, $media = 'all' ) {
 		if ( ! $src ) {
-			$src     = $this->pluginUrl( "{$this->cssPatch}{$this->base_name}-{$handle}.css" );
-			$file_id = $this->base_name . "-" . $handle;
+			$src     = $this->pluginUrl( "{$this->cssPatch}{$this->baseName}-{$handle}.css" );
+			$file_id = $this->baseName . "-" . $handle;
 		} else {
 			$file_id = $handle;
 		}

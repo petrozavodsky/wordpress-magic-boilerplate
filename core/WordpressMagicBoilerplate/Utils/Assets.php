@@ -77,14 +77,14 @@ trait Assets {
 
 	/**
 	 * @param string $handle
-	 * @param bool $in_footer
+	 * @param bool $inFooter
 	 * @param array $dep
 	 * @param bool|string $version
 	 * @param bool|string $src
 	 *
 	 * @return string
 	 */
-	public function registerJs( $handle, $in_footer = false, $dep = [], $version = false, $src = false ) {
+	public function registerJs($handle, $inFooter = false, $dep = [], $version = false, $src = false ) {
 		$this->basenameHelper();
 		if ( ! $src ) {
         		$min= ".min";
@@ -94,9 +94,9 @@ trait Assets {
 			}
 
 			$src     = $this->pluginUrl( "{$this->jsPatch}{$this->baseName}-{$handle}{$min}.js" );
-			$file_id = $this->baseName . "-" . $handle;
+			$fileID = $this->baseName . "-" . $handle;
 		} else {
-			$file_id = $handle;
+			$fileID = $handle;
 		}
 		if ( ! $version ) {
 			$version = $this->version;
@@ -112,17 +112,17 @@ trait Assets {
 			$hook = 'login_enqueue_scripts';
 		}
 
-		add_action( $hook, function () use ( $in_footer, $version, $dep, $src, $file_id ) {
+		add_action( $hook, function () use ( $inFooter, $version, $dep, $src, $fileID ) {
 			wp_enqueue_script(
-				$file_id,
+				$fileID,
 				$src,
 				$dep,
 				$version,
-				$in_footer
+				$inFooter
 			);
 		}, 10 );
 
-		return $file_id;
+		return $fileID;
 	}
 
 	/**

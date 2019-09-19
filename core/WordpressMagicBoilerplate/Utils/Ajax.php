@@ -6,7 +6,7 @@ abstract class Ajax {
 
 	protected $ajaxUrl;
 	protected $ajaxUrlAction;
-
+	protected $action;
 
 	/**
 	 * Ajax constructor.
@@ -17,6 +17,7 @@ abstract class Ajax {
 	 */
 	public function __construct($actionName, $type = 'front' ) {
 
+		$this->action        = $actionName;
 		$this->ajaxUrl        = $this->createAjaxUrl();
 		$this->ajaxUrlAction = $this->createAjaxUrlAction( $actionName );
 

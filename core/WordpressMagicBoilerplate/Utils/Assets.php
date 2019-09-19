@@ -7,7 +7,7 @@ trait Assets {
 	private $loginPage = false;
 
 	private $defaults_vars = [
-		'css_patch' => "public/css/",
+		'cssPatch' => "public/css/",
 		'js_patch'  => "public/js/",
 		'version'   => "1.0.3",
 		'min'       => true
@@ -97,7 +97,7 @@ trait Assets {
 			if(( defined('CONCATENATE_SCRIPTS') && CONCATENATE_SCRIPTS === false) || $this->min === false  ){
 				$min= '';
 			}
-			
+
 			$src     = $this->pluginUrl( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
@@ -172,7 +172,7 @@ trait Assets {
 	 */
 	public function registerCss( $handle, $dep = [], $version = false, $src = false, $media = 'all' ) {
 		if ( ! $src ) {
-			$src     = $this->pluginUrl( "{$this->css_patch}{$this->base_name}-{$handle}.css" );
+			$src     = $this->pluginUrl( "{$this->cssPatch}{$this->base_name}-{$handle}.css" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;

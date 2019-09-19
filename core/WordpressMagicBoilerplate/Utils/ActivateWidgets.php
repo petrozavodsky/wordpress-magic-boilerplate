@@ -9,7 +9,7 @@ class ActivateWidgets {
 	private $version = '1.0.3';
 	private $space = false;
 	private $file;
-	private $css_patch = "public/css/";
+	private $cssPatch = "public/css/";
 	private $js_patch = "public/js/";
 	private $path;
 	public $base_name;
@@ -56,7 +56,7 @@ class ActivateWidgets {
 	 */
 	public function addWidgetJsCss( $widget_name, $space = false ) {
 
-		if ( $this->path . $this->css_patch .  $widget_name . ".css" ) {
+		if ( $this->path . $this->cssPatch .  $widget_name . ".css" ) {
 			$this->addCss( $widget_name, "footer" );
 		}
 	}
@@ -80,12 +80,12 @@ class ActivateWidgets {
 	}
 
 	/**
-	 * @param string $css_patch
+	 * @param string $cssPatch
 	 *
 	 * @return ActivateWidgets
 	 */
-	public function setCssPatch( $css_patch ) {
-		$this->css_patch = $css_patch;
+	public function setCssPatch( $cssPatch ) {
+		$this->cssPatch = $cssPatch;
 
 		return $this;
 	}

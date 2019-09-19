@@ -15,7 +15,7 @@ trait Assets {
 
 	public function __get( $name ) {
 
-		if ( $name == 'base_name' ) {
+		if ( $name == 'baseName' ) {
 			return $this->basenameHelper();
 		}
 

@@ -9,7 +9,7 @@ class MyClass {
 	use Assets;
 	private $state;
 	private $post_type = 'post';
-	private $base_name;
+	private $baseName;
 
 	/**
 	 *
@@ -17,7 +17,7 @@ class MyClass {
 	 */
 	public function __construct( $state ) {
 		$this->state     = $state;
-		$this->base_name = $state->base_name;
+		$this->baseName = $state->baseName;
 		add_action( "get_header", [ $this, "router" ] );
 
 	}

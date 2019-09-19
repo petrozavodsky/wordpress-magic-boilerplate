@@ -12,13 +12,13 @@ class ActivateWidgets {
 	private $cssPatch = "public/css/";
 	private $jsPatch = "public/js/";
 	private $path;
-	public $base_name;
+	public $baseName;
 
 	public function __construct( $file, $dir, $space ) {
 		$this->file  = $file;
 		$this->space = $space;
 		$this->path        = plugin_dir_path( $this->file );
-		$this->base_name = $this->space;
+		$this->baseName = $this->space;
 
 		$this->activateWidgets( $dir );
 	}

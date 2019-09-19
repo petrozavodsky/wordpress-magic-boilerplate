@@ -22,7 +22,7 @@ class Wrap {
 	 */
 	public function __get( $name ) {
 
-		if ( $name == 'base_name' ) {
+		if ( $name == 'baseName' ) {
 			return $this->basenameHelper();
 		}
 
@@ -118,7 +118,7 @@ class Wrap {
 	 */
 	public function setTextdomain( $domine = false ) {
 		if ( ! $domine ) {
-			$domine = $this->base_name;
+			$domine = $this->baseName;
 		}
 
 		load_textdomain( $domine, $this->plugin_path . "languages/{$this->plugin_text_domain}-" . get_locale() . '.mo' );

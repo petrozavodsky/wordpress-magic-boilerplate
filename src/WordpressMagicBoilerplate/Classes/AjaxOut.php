@@ -9,8 +9,8 @@ class AjaxOut extends Ajax {
 
 	use Assets;
 
-	public function init( $action_name ) {
-		$this->addJsCss( $action_name );
+	public function init($actionName ) {
+		$this->addJsCss( $actionName );
 
 	}
 

@@ -11,19 +11,19 @@ abstract class Ajax {
 	/**
 	 * Ajax constructor.
 	 *
-	 * @param string $action_name
+	 * @param string $actionName
 	 * @param string $type
 	 *
 	 */
-	public function __construct( $action_name, $type = 'front' ) {
+	public function __construct($actionName, $type = 'front' ) {
 
 		$this->ajaxUrl        = $this->createAjaxUrl();
-		$this->ajaxUrlAction = $this->createAjaxUrlAction( $action_name );
+		$this->ajaxUrlAction = $this->createAjaxUrlAction( $actionName );
 
-		$this->$type( $action_name );
+		$this->$type( $actionName );
 
 		if ( method_exists( $this, 'init' ) ) {
-			$this->init( $action_name );
+			$this->init( $actionName );
 		}
 	}
 
@@ -69,14 +69,14 @@ abstract class Ajax {
 
 	}
 
-	public function front( $action_name, $callback = 'payload' ) {
-		add_action( 'wp_ajax_' . $action_name, [ $this, $callback]  );
-		add_action( 'wp_ajax_nopriv_' . $action_name, [ $this, $callback ] );
+	public function front($actionName, $callback = 'payload' ) {
+		add_action( 'wp_ajax_' . $actionName, [ $this, $callback]  );
+		add_action( 'wp_ajax_nopriv_' . $actionName, [ $this, $callback ] );
 	}
 
 
-	public function admin( $action_name, $callback = 'payload' ) {
-		add_action( 'wp_ajax_' . $action_name, [$this, $callback] );
+	public function admin($actionName, $callback = 'payload' ) {
+		add_action( 'wp_ajax_' . $actionName, [$this, $callback] );
 	}
 
 	public function payload() {

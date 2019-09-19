@@ -34,8 +34,8 @@ class AjaxOut2 extends Ajax {
 		$this->varsAjax(
 			$handle,
 			[
-				'ajax_url'        => $this->ajax_url,
-				'ajax_url_action' => $this->ajax_url_action,
+				'ajaxUrl'        => $this->ajaxUrl,
+				'ajaxUrlAction' => $this->ajaxUrlAction,
 			]
 		);
 	}

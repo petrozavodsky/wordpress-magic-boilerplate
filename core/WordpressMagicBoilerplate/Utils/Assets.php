@@ -6,7 +6,7 @@ trait Assets {
 
 	private $loginPage = false;
 
-	private $defaults_vars = [
+	private $defaultsVars = [
 		'cssPatch' => "public/css/",
 		'jsPatch'  => "public/js/",
 		'version'   => "1.0.3",
@@ -27,8 +27,8 @@ trait Assets {
 			return $this->url();
 		}
 
-		if ( array_key_exists( $name, $this->defaults_vars ) ) {
-			return $this->defaults_vars[ $name ];
+		if ( array_key_exists( $name, $this->defaultsVars ) ) {
+			return $this->defaultsVars[ $name ];
 		}
 
 		return null;

@@ -4,8 +4,8 @@ namespace WordpressMagicBoilerplate\Utils;
 
 abstract class Ajax {
 
-	protected $ajax_url;
-	protected $ajax_url_action;
+	protected $ajaxUrl;
+	protected $ajaxUrlAction;
 
 
 	/**
@@ -17,8 +17,8 @@ abstract class Ajax {
 	 */
 	public function __construct( $action_name, $type = 'front' ) {
 
-		$this->ajax_url        = $this->createAjaxUrl();
-		$this->ajax_url_action = $this->createAjaxUrlAction( $action_name );
+		$this->ajaxUrl        = $this->createAjaxUrl();
+		$this->ajaxUrlAction = $this->createAjaxUrlAction( $action_name );
 
 		$this->$type( $action_name );
 
@@ -40,7 +40,7 @@ abstract class Ajax {
 	 * @return string
 	 */
 	protected function createAjaxUrlAction( $action ) {
-		return add_query_arg( [ 'action' => $action ], $this->ajax_url );
+		return add_query_arg( [ 'action' => $action ], $this->ajaxUrl );
 	}
 
 	/**

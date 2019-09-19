@@ -8,7 +8,7 @@ class Wrap {
 	public $cssPatch = "public/css/";
 	public $jsPatch = "public/js/";
 
-	private $defaults_vars = [
+	private $defaultsVars = [
 		'cssPatch' => "public/css/",
 		'jsPatch'  => "public/js/",
 		'version'   => "1.0.3",
@@ -47,8 +47,8 @@ class Wrap {
 			return $this->getTextDomain();
 		}
 
-		if ( array_key_exists( $name, $this->defaults_vars ) ) {
-			return $this->defaults_vars[ $name ];
+		if ( array_key_exists( $name, $this->defaultsVars ) ) {
+			return $this->defaultsVars[ $name ];
 		}
 
 		return null;

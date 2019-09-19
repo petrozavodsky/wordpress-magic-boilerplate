@@ -67,12 +67,12 @@ trait Assets {
 		$string      = plugin_basename( __FILE__ );
 		$array       = explode( '/', $string );
 		$path        = array_shift( $array );
-		$plugins_url = plugin_dir_url( WP_PLUGIN_DIR . '/' . $path . '/' );
+		$pluginsUrl = plugin_dir_url( WP_PLUGIN_DIR . '/' . $path . '/' );
 		if ( ! $val ) {
-			return $plugins_url . $path . "/";
+			return $pluginsUrl . $path . "/";
 		}
 
-		return $plugins_url . $path . "/" . $val;
+		return $pluginsUrl . $path . "/" . $val;
 	}
 
 	/**

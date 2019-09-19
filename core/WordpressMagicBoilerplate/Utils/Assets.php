@@ -2,6 +2,8 @@
 
 namespace WordpressMagicBoilerplate\Utils;
 
+use WordpressMagicBoilerplate\Base\Wrap;
+
 trait Assets {
 
 	private $loginPage = false;
@@ -35,14 +37,7 @@ trait Assets {
 	}
 
 	public function url() {
-		$plugins    = trailingslashit( plugins_url() );
-		$plugin     = plugin_dir_url( __FILE__ );
-		$plugin     = preg_replace( "#/$#", "", $plugin );
-		$path_array = str_replace( $plugins, '', $plugin );
-		$array      = explode( '/', $path_array );
-		$path       = array_shift( $array );
-
-		return trailingslashit( $plugins.$path );
+	    return Wrap::url();
 	}
 
 	public function basenameHelper() {

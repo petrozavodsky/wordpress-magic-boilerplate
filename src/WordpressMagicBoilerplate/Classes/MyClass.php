@@ -36,7 +36,7 @@ class MyClass {
 			"header",
 			[],
 			$this->state->version,
-			$this->state->plugin_url . $this->state->css_patch . "Common-style.css"
+			$this->state->pluginUrl . $this->state->css_patch . "Common-style.css"
 		);
 
 		//page type rout

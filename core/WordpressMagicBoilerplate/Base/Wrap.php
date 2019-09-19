@@ -35,15 +35,15 @@ class Wrap {
 
 		}
 
-		if ( $name == 'plugin_path' ) {
+		if ( $name == 'pluginPath' ) {
 			return $this->pluginDir();
 		}
 
-		if ( $name == 'plugin_url' ) {
+		if ( $name == 'pluginUrl' ) {
 			return $this->url();
 		}
 
-		if ( $name == 'plugin_text_domain' ) {
+		if ( $name == 'pluginTextDomain' ) {
 			return $this->getTextDomain();
 		}
 
@@ -121,7 +121,7 @@ class Wrap {
 			$domine = $this->baseName;
 		}
 
-		load_textdomain( $domine, $this->plugin_path . "languages/{$this->plugin_text_domain}-" . get_locale() . '.mo' );
+		load_textdomain( $domine, $this->pluginPath . "languages/{$this->pluginTextDomain}-" . get_locale() . '.mo' );
 
 		return $domine;
 	}

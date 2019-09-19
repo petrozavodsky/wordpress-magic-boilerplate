@@ -52,13 +52,13 @@ class ActivateWidgets {
 	}
 
 	/**
-	 * @param string $widget_name
+	 * @param string $widgetName
 	 * @param mixed $space
 	 */
-	public function addWidgetJsCss( $widget_name, $space = false ) {
+	public function addWidgetJsCss($widgetName, $space = false ) {
 
-		if ( $this->path . $this->cssPatch .  $widget_name . ".css" ) {
-			$this->addCss( $widget_name, "footer" );
+		if ( $this->path . $this->cssPatch .  $widgetName . ".css" ) {
+			$this->addCss( $widgetName, "footer" );
 		}
 	}
 

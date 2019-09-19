@@ -86,18 +86,18 @@ class Autoload {
 	 * Load the mapped file for a namespace prefix and relative class.
 	 *
 	 * @param string $prefix The namespace prefix.
-	 * @param string $relative_class The relative class name.
+	 * @param string $relativeClass The relative class name.
 	 *
 	 * @return mixed Boolean false if no mapped file can be loaded, or the
 	 * name of the mapped file that was loaded.
 	 */
-	protected function loadMappedFile( $prefix, $relative_class ) {
+	protected function loadMappedFile($prefix, $relativeClass ) {
 		if ( isset( $this->prefixes[ $prefix ] ) === false ) {
 			return false;
 		}
 
 		foreach ( $this->prefixes[ $prefix ] as $baseDir ) {
-			$file = $baseDir . str_replace( '\\', '/', $relative_class ) . '.php';
+			$file = $baseDir . str_replace( '\\', '/', $relativeClass ) . '.php';
 			if ( $this->requireFile( $file ) ) {
 				// yes, we're done
 				return $file;

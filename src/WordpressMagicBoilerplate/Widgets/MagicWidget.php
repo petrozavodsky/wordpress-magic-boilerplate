@@ -24,7 +24,7 @@ class MagicWidget extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
- 
+
                 echo (isset($args['before_widget'])? $args['before_widget']:'');
 		?>
         <div>
@@ -42,8 +42,8 @@ class MagicWidget extends WP_Widget {
 		return 'noform';
 	}
 
-	public function update( $new_instance, $old_instance ) {
-		return $new_instance;
+	public function update($newInstance, $oldInstance ) {
+		return $newInstance;
 	}
 
 }

@@ -6,11 +6,11 @@ class Wrap {
 
 	public $version = '1.0.3';
 	public $cssPatch = "public/css/";
-	public $js_patch = "public/js/";
+	public $jsPatch = "public/js/";
 
 	private $defaults_vars = [
 		'cssPatch' => "public/css/",
-		'js_patch'  => "public/js/",
+		'jsPatch'  => "public/js/",
 		'version'   => "1.0.3",
 		'min'       => true
 	];

@@ -8,7 +8,7 @@ trait Assets {
 
 	private $defaults_vars = [
 		'cssPatch' => "public/css/",
-		'js_patch'  => "public/js/",
+		'jsPatch'  => "public/js/",
 		'version'   => "1.0.3",
 		'min'       => true
 	];
@@ -98,7 +98,7 @@ trait Assets {
 				$min= '';
 			}
 
-			$src     = $this->pluginUrl( "{$this->js_patch}{$this->base_name}-{$handle}{$min}.js" );
+			$src     = $this->pluginUrl( "{$this->jsPatch}{$this->base_name}-{$handle}{$min}.js" );
 			$file_id = $this->base_name . "-" . $handle;
 		} else {
 			$file_id = $handle;

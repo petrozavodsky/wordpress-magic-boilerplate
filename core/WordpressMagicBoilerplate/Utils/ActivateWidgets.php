@@ -10,7 +10,7 @@ class ActivateWidgets {
 	private $space = false;
 	private $file;
 	private $cssPatch = "public/css/";
-	private $js_patch = "public/js/";
+	private $jsPatch = "public/js/";
 	private $path;
 	public $base_name;
 
@@ -91,12 +91,12 @@ class ActivateWidgets {
 	}
 
 	/**
-	 * @param string $js_patch
+	 * @param string $jsPatch
 	 *
 	 * @return ActivateWidgets
 	 */
-	public function setJsPatch( $js_patch ) {
-		$this->js_patch = $js_patch;
+	public function setJsPatch( $jsPatch ) {
+		$this->jsPatch = $jsPatch;
 
 		return $this;
 	}

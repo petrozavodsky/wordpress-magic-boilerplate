@@ -45,9 +45,8 @@ class AjaxOut2 extends Ajax {
 	 */
 	public function callback( $request ) {
 		unset( $request['action'] );
-		// Use
-		// var_dump( $request );
-		die;
 
+		$json = [ "out" => "AJAX Content" ];
+		wp_send_json( $json );
 	}
 }

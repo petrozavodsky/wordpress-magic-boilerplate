@@ -1,7 +1,7 @@
 
 
 
-ⓦ WordPress Magic Boilerplate  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/59a2c5e8bf144f6aa902563d16c2b7cb)](https://app.codacy.com/app/petrozavodsky/wordpress-magic-boilerplate?utm_source=github.com&utm_medium=referral&utm_content=petrozavodsky/wordpress-magic-boilerplate&utm_campaign=Badge_Grade_Dashboard) [![AUR](https://img.shields.io/cran/l/devtools.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![WordPress](https://img.shields.io/badge/wordpress-5.2.2tested-brightgreen.svg)](https://ru.wordpress.org/releases/) 
+ⓦ WordPress Magic Boilerplate  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/59a2c5e8bf144f6aa902563d16c2b7cb)](https://app.codacy.com/app/petrozavodsky/wordpress-magic-boilerplate?utm_source=github.com&utm_medium=referral&utm_content=petrozavodsky/wordpress-magic-boilerplate&utm_campaign=Badge_Grade_Dashboard) [![AUR](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![WordPress](https://img.shields.io/badge/wordpress-5.2.3%20tested-brightgreen.svg)](https://ru.wordpress.org/releases/) 
 =======================
 
 

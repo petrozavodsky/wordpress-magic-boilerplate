@@ -85,6 +85,7 @@ gulp.task('js', function (done) {
 
 let css = function (path) {
   return gulp.src(path).
+    pipe(plugins.sourcemaps.init({ loadMaps: true })).
     pipe(plugins.plumber()).
     pipe(plugins.less()).
     pipe(plugins.autoprefixer(['ios_saf >= 6', 'last 3 versions'])).
@@ -92,6 +93,7 @@ let css = function (path) {
     pipe(gulp.dest(function (file) {
       return file.base
     })).
+    pipe(plugins.sourcemaps.write()).
     pipe(plugins.notify({ message: 'Стили плагина собрались' }))
 }
 

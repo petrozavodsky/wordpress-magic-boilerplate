@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/petrozavodsky/wordpress-magic-boilerplate#readme",
   "devDependencies": {
+    "lodash.template": ">=4.5.0",
     "autoprefixer": "^9.7.2",
     "concat": "^1.0.3",
     "del": "^5.1.0",

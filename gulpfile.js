@@ -1,7 +1,6 @@
 const gulp = require('gulp'),
   gulpLoadPlugins = require('gulp-load-plugins'),
   plugins = gulpLoadPlugins(),
-  sourcemaps = require('gulp-sourcemaps'),
   del = require('del'),
   path = require('path'),
   imageminJpegRecompress = require('imagemin-jpeg-recompress'),
@@ -86,12 +85,10 @@ gulp.task('js', function (done) {
 
 let css = function (path) {
   return gulp.src(path).
-    pipe(sourcemaps.init()).
     pipe(plugins.plumber()).
     pipe(plugins.less()).
     pipe(plugins.autoprefixer(['ios_saf >= 6', 'last 3 versions'])).
     pipe(plugins.csso()).
-    pipe(sourcemaps.write('/maps')).
     pipe(gulp.dest(function (file) {
       return file.base
     })).

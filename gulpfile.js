@@ -112,6 +112,3 @@ gulp.task('watch', function () {
     css(file)
   })
 })
-
-exports.css = css
-exports.js = js

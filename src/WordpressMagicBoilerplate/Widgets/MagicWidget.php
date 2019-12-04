@@ -27,10 +27,9 @@ class MagicWidget extends WP_Widget {
 
                 echo (isset($args['before_widget'])? $args['before_widget']:'');
 		?>
-        <div>
-            <h1>Magic</h1>
-        </div>
-
+		<div>
+		    <h1>Magic</h1>
+		</div>
 		<?php
 		echo (isset($args['after_widget'])? $args['after_widget']:'');
 	}

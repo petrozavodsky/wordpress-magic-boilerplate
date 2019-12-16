@@ -12,7 +12,7 @@ class AjaxOut2 extends Ajax {
 	/**
 	 * AjaxOut2 constructor.
 	 */
-	function __construct() {
+	public function __construct() {
 		$name = "AjaxOut2";
 
 		parent::__construct( $name );

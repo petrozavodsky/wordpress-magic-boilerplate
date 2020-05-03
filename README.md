@@ -49,7 +49,7 @@
 ## Фитчи
 
  - [PSR-4 автозагрузка](http://www.php-fig.org/psr/psr-4/) классов;
- - [PSR-2 Кодстайл ](https://www.php-fig.org/psr/psr-2/);
+ - [PSR-2 Кодстайл](https://www.php-fig.org/psr/psr-2/);
  - Универсальная структура проекта;
  - Каркас для базового класса плагина;
  - Авторегистрация [WordPress виджетов](https://codex.wordpress.org/Widgets_API) при создании их класса;

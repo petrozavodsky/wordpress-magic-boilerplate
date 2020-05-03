@@ -9,17 +9,7 @@ class Shortcode extends ActivateShortcode {
 
 	use Assets;
 
-	protected $js = false;
-	protected $css = true;
-
-	public function init( $tag, $attrs ) {
-		add_action( "template_redirect", function () use ( $tag ) {
-			global $wp_query;
-			if ( is_singular() && has_shortcode( $wp_query->post->post_content, $tag ) ) {
-				$this->addCss($tag);
-			}
-		} );
-	}
+	public $css = true;
 
 	public function base( $attrs, $content, $tag ) {
 

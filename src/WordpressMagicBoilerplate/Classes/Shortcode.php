@@ -8,9 +8,13 @@ use WordpressMagicBoilerplate\Utils\Assets;
 class Shortcode extends ActivateShortcode {
 
 	use Assets;
-
+	
+	// свойство подключает файл стилей
 	public $css = true;
 
+	// аргуметы метода получат массив атрибутов шорткода,
+	// имя шорткода и контент если он есть.
+	// Метод всегда должен возвращать строку.
 	public function base( $attrs, $content, $tag ) {
 
 		$res  = "";
@@ -19,5 +23,7 @@ class Shortcode extends ActivateShortcode {
 
 		return $res;
 	}
+	
+	// тут можно реализовать логику работы шорткода 
 
 }

@@ -25,7 +25,7 @@ class Shortcode extends ActivateShortcode {
 
 		$res  = "";
 		$res  .= "<strong>{$attrs['title']}</strong>";
-                $res  .= "<p>{$attrs['description']}</p>";
+		$res  .= "<p>{$attrs['description']}</p>";
 
 		return $res;
 	}

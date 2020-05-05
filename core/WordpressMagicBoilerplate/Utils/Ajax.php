@@ -75,7 +75,7 @@ abstract class Ajax
         $data = wp_parse_args(
             $data,
             [
-                'action_url' => add_query_arg(['action' => $this->action], $this->ajaxUrl)
+                'ajaxUrl' => add_query_arg(['action' => $this->action], $this->ajaxUrl)
             ]
         );
 

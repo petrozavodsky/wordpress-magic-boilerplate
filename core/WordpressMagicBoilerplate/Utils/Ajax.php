@@ -14,6 +14,11 @@ abstract class Ajax
 
     protected $js = false;
 
+    protected $jsDependences = [];
+
+    protected $jsPosition = 'wp_footer';
+
+    protected $jsVersion = '1.0.0';
 
     /**
      * Ajax constructor.
@@ -41,7 +46,14 @@ abstract class Ajax
     protected function assets()
     {
         if ($this->js) {
-            $jsHandle = $this->addJs($this->action);
+
+            $jsHandle = $this->addJs(
+                $this->action,
+                $this->jsPosition,
+                $this->jsDependences,
+                $this->jsVersion
+            );
+
             $this->varsAjax($jsHandle);
         }
     }
@@ -61,7 +73,7 @@ abstract class Ajax
      */
     protected function createAjaxUrlAction($action)
     {
-        return $this->ajaxUrl;
+        return add_query_arg(['action' => $this->action], $this->ajaxUrl);
     }
 
     /**
@@ -75,17 +87,18 @@ abstract class Ajax
         $data = wp_parse_args(
             $data,
             [
-                'ajaxUrl' => add_query_arg(['action' => $this->action], $this->ajaxUrl)
+                'ajaxUrlAction' => $this->ajaxUrlAction,
+                'ajaxUrl' => $this->ajaxUrl,
             ]
         );
 
-        add_action('wp_enqueue_scripts', function () use ($data, $handle) {
+        add_action($this->jsPosition, function () use ($data, $handle) {
             wp_localize_script(
                 $handle,
                 str_replace('-', '_', $handle . "__vars"),
                 $data
             );
-        }, 80);
+        },);
     }
 
     public function front($actionName, $callback = 'payload')

@@ -1,4 +1,4 @@
-fetch(WordpressMagicBoilerplate_boilerplate_ajax__vars.ajaxUrlAction)
+fetch(WordpressMagicBoilerplate_boilerplate_ajax_3__vars.ajaxUrlAction)
     .then(function (response) {
         return response.json();
     })

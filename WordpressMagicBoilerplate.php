@@ -34,8 +34,8 @@ class WordpressMagicBoilerplate extends Wrap {
 	public function __construct() {
 		self::$textdomine = $this->setTextdomain();
 
+        new \WordpressMagicBoilerplate\Classes\AjaxOut( 'boilerplate-ajax' );
 		new \WordpressMagicBoilerplate\Classes\AjaxOut2();
-		new \WordpressMagicBoilerplate\Classes\AjaxOut( 'boilerplate-ajax' );
         new \WordpressMagicBoilerplate\Classes\AjaxOut3('boilerplate-ajax-3');
 
 

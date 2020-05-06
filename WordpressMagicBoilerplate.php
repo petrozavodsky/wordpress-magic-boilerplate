@@ -38,7 +38,6 @@ class WordpressMagicBoilerplate extends Wrap {
 		new \WordpressMagicBoilerplate\Classes\AjaxOut2();
         new \WordpressMagicBoilerplate\Classes\AjaxOut3('boilerplate-ajax-3');
 
-
         new \WordpressMagicBoilerplate\Classes\MyClass( $this );
 		new \WordpressMagicBoilerplate\Utils\ActivateWidgets(
 			__FILE__,

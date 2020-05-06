@@ -5,44 +5,47 @@ namespace WordpressMagicBoilerplate\Widgets;
 use WordpressMagicBoilerplate;
 use WP_Widget;
 
-class MagicWidget extends WP_Widget {
+class MagicWidget extends WP_Widget
+{
 
-	private $textdomain = __NAMESPACE__;
-	private $suffix = " - MagicWidget";
+    private $suffix = " - MagicWidget";
 
-	function __construct() {
-		$this->textdomain = WordpressMagicBoilerplate::$textdomine;
-		$className        = get_called_class();
-		$className        = str_replace( "\\", '-', $className );
-		parent::__construct(
-			$className,
-			__( "My widget ", $this->textdomain ) . $this->suffix,
-			[
-				'description' => __( "My widget", $this->textdomain ) . $this->suffix
-			]
-		);
-	}
+    function __construct()
+    {
 
-	public function widget( $args, $instance ) {
+        $className = get_called_class();
+        $className = str_replace("\\", '-', $className);
+        parent::__construct(
+            $className,
+            __("My widget ", 'WordpressMagicBoilerplate') . $this->suffix,
+            [
+                'description' => __("My widget", 'WordpressMagicBoilerplate') . $this->suffix
+            ]
+        );
+    }
 
-                echo (isset($args['before_widget'])? $args['before_widget']:'');
-		?>
-		<div>
-		    <h1>Magic</h1>
-		</div>
-		<?php
-		echo (isset($args['after_widget'])? $args['after_widget']:'');
-	}
+    public function widget($args, $instance)
+    {
+
+        echo(isset($args['before_widget']) ? $args['before_widget'] : ''); ?>
+        <div>
+            <h1>Magic</h1>
+        </div>
+        <?php
+        echo(isset($args['after_widget']) ? $args['after_widget'] : '');
+    }
 
 
-	public function form( $instance ) {
-		echo '<p class="no-options-widget">' . __( 'There are no options for this widget.', $this->textdomain ) . '</p>';
+    public function form($instance)
+    {
+        echo '<p class="no-options-widget">' . __('There are no options for this widget.', 'WordpressMagicBoilerplate') . '</p>';
 
-		return 'noform';
-	}
+        return 'noform';
+    }
 
-	public function update($newInstance, $oldInstance ) {
-		return $newInstance;
-	}
+    public function update($newInstance, $oldInstance)
+    {
+        return $newInstance;
+    }
 
 }

@@ -25,7 +25,7 @@ class AjaxOut extends Ajax
     {
         $handle = $this->addJs(
             $action,
-            'header',
+            'footer',
             ['jquery']
         );
 
@@ -34,7 +34,8 @@ class AjaxOut extends Ajax
             [
                 'ajaxUrl' => $this->ajaxUrl,
                 'ajaxUrlAction' => $this->ajaxUrlAction,
-            ]
+            ],
+            'footer'
         );
     }
 }

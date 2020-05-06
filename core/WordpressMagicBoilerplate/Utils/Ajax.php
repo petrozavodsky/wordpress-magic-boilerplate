@@ -16,7 +16,7 @@ abstract class Ajax
 
     protected $jsDependences = [];
 
-    protected $jsPosition = 'wp_footer';
+    protected $jsPosition;
 
     protected $jsVersion = '1.0.0';
 
@@ -30,6 +30,8 @@ abstract class Ajax
     public function __construct($actionName, $type = 'front')
     {
 
+        $this->jsPosition = $this->jsPositionCalc($this->jsPosition);
+
         $this->action = $actionName;
         $this->ajaxUrl = $this->createAjaxUrl();
         $this->ajaxUrlAction = $this->createAjaxUrlAction($actionName);
@@ -41,6 +43,21 @@ abstract class Ajax
         }
 
         $this->assets();
+    }
+
+    protected function jsPositionCalc($position)
+    {
+        if ($position == "wp_footer" || $position == "footer" || $position == "body") {
+            return "wp_footer";
+        } elseif ($position == 'admin' || $position == 'admin_header' || $position == 'admin_head') {
+            return 'admin_enqueue_scripts';
+        } elseif ($position == 'login' || $position == 'login-page') {
+            return 'login_enqueue_scripts';
+        } elseif ($position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head") {
+            return "wp_enqueue_scripts";
+        }
+
+        return "wp_enqueue_scripts";
     }
 
     protected function assets()
@@ -82,8 +99,15 @@ abstract class Ajax
      * @param array $data
      *
      */
-    public function varsAjax($handle, $data = [])
+    public function varsAjax($handle, $data = [], $position = false)
     {
+
+        if (false == $position) {
+            $position = $this->jsPosition;
+        } else {
+            $position = $this->jsPositionCalc($position);
+        }
+
         $data = wp_parse_args(
             $data,
             [
@@ -92,13 +116,13 @@ abstract class Ajax
             ]
         );
 
-        add_action($this->jsPosition, function () use ($data, $handle) {
+        add_action($position, function () use ($data, $handle) {
             wp_localize_script(
                 $handle,
                 str_replace('-', '_', $handle . "__vars"),
                 $data
             );
-        },);
+        }, 11);
     }
 
     public function front($actionName, $callback = 'payload')

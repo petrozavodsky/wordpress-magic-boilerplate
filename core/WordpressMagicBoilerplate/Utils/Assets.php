@@ -4,229 +4,239 @@ namespace WordpressMagicBoilerplate\Utils;
 
 use WordpressMagicBoilerplate\Base\Wrap;
 
-trait Assets {
+trait Assets
+{
 
-	private $loginPage = false;
+    private $loginPage = false;
 
-	private $defaultsVars = [
-		'cssPatch' => "public/css/",
-		'jsPatch'  => "public/js/",
-		'version'   => "1.0.3",
-		'min'       => true
-	];
+    private $defaultsVars = [
+        'cssPatch' => "public/css/",
+        'jsPatch' => "public/js/",
+        'version' => "1.0.3",
+        'min' => true
+    ];
 
-	public function __get( $name ) {
+    public function __get($name)
+    {
 
-		if ( $name == 'baseName' ) {
-			return $this->basenameHelper();
-		}
+        if ($name == 'baseName') {
+            return $this->basenameHelper();
+        }
 
-		if ( $name == 'file' ) {
-			return $this->pluginDir();
-		}
+        if ($name == 'file') {
+            return $this->pluginDir();
+        }
 
-		if ( $name == 'url' ) {
-			return $this->url();
-		}
+        if ($name == 'url') {
+            return $this->url();
+        }
 
-		if ( array_key_exists( $name, $this->defaultsVars ) ) {
-			return $this->defaultsVars[ $name ];
-		}
+        if (array_key_exists($name, $this->defaultsVars)) {
+            return $this->defaultsVars[$name];
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	public function url() {
-	    return Wrap::url();
-	}
+    public function url()
+    {
+        return Wrap::url();
+    }
 
-	public function basenameHelper() {
-		$array = explode( '\\', __NAMESPACE__ );
-		$id    = array_shift( $array );
+    public function basenameHelper()
+    {
+        $array = explode('\\', __NAMESPACE__);
+        $id = array_shift($array);
 
-		return $id;
-	}
+        return $id;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function pluginDir() {
-		$string = plugin_basename( __FILE__ );
-		$array  = explode( '/', $string );
-		$path   = array_shift( $array );
+    /**
+     * @return string
+     */
+    public function pluginDir()
+    {
+        $string = plugin_basename(__FILE__);
+        $array = explode('/', $string);
+        $path = array_shift($array);
 
-		return WP_PLUGIN_DIR . '/' . $path . '/';
-	}
+        return WP_PLUGIN_DIR . '/' . $path . '/';
+    }
 
-	/**
-	 * @param mixed string|bool $val
-	 *
-	 * @return string
-	 */
-	public function pluginUrl( $val = false ) {
-		$string      = plugin_basename( __FILE__ );
-		$array       = explode( '/', $string );
-		$path        = array_shift( $array );
-		$pluginsUrl = plugin_dir_url( WP_PLUGIN_DIR . '/' . $path . '/' );
-		if ( ! $val ) {
-			return $pluginsUrl . $path . "/";
-		}
+    /**
+     * @param mixed string|bool $val
+     *
+     * @return string
+     */
+    public function pluginUrl($val = false)
+    {
+        $string = plugin_basename(__FILE__);
+        $array = explode('/', $string);
+        $path = array_shift($array);
+        $pluginsUrl = plugin_dir_url(WP_PLUGIN_DIR . '/' . $path . '/');
+        if (!$val) {
+            return $pluginsUrl . $path . "/";
+        }
 
-		return $pluginsUrl . $path . "/" . $val;
-	}
+        return $pluginsUrl . $path . "/" . $val;
+    }
 
-	/**
-	 * @param string $handle
-	 * @param bool $inFooter
-	 * @param array $dep
-	 * @param bool|string $version
-	 * @param bool|string $src
-	 *
-	 * @return string
-	 */
-	public function registerJs($handle, $inFooter = false, $dep = [], $version = false, $src = false ) {
-		$this->basenameHelper();
-		if ( ! $src ) {
-        		$min= ".min";
+    /**
+     * @param string $handle
+     * @param bool $inFooter
+     * @param array $dep
+     * @param bool|string $version
+     * @param bool|string $src
+     *
+     * @return string
+     */
+    public function registerJs($handle, $inFooter = false, $dep = [], $version = false, $src = false)
+    {
 
-			if(( defined('CONCATENATE_SCRIPTS') && CONCATENATE_SCRIPTS === false) || $this->min === false  ){
-				$min= '';
-			}
+        if (!$src) {
+            $min = ".min";
 
-			$src     = $this->pluginUrl( "{$this->jsPatch}{$this->baseName}-{$handle}{$min}.js" );
-			$fileID = $this->baseName . "-" . $handle;
-		} else {
-			$fileID = $handle;
-		}
-		if ( ! $version ) {
-			$version = $this->version;
-		}
+            if ((defined('CONCATENATE_SCRIPTS') && CONCATENATE_SCRIPTS === false) || $this->min === false) {
+                $min = '';
+            }
 
-		$hook = "wp_enqueue_scripts";
+            $src = $this->pluginUrl("{$this->jsPatch}{$this->baseName}-{$handle}{$min}.js");
+            $fileID = $this->baseName . "-" . $handle;
+        } else {
+            $fileID = $handle;
+        }
+        if (!$version) {
+            $version = $this->version;
+        }
 
-		if ( is_admin() ) {
-			$hook = "admin_enqueue_scripts";
-		}
+        $hook = "wp_enqueue_scripts";
 
-		if($this->loginPage){
-			$hook = 'login_enqueue_scripts';
-		}
+        if (is_admin()) {
+            $hook = "admin_enqueue_scripts";
+        }
 
-		add_action( $hook, function () use ( $inFooter, $version, $dep, $src, $fileID ) {
-			wp_enqueue_script(
-				$fileID,
-				$src,
-				$dep,
-				$version,
-				$inFooter
-			);
-		}, 10 );
+        if ($this->loginPage) {
+            $hook = 'login_enqueue_scripts';
+        }
 
-		return $fileID;
-	}
+        add_action($hook, function () use ($inFooter, $version, $dep, $src, $fileID) {
+            wp_register_script(
+                $fileID,
+                $src,
+                $dep,
+                $version,
+                $inFooter
+            );
+        }, 9);
 
-	/**
-	 * @param string $handle
-	 * @param string $position
-	 * @param array $dep
-	 * @param bool|string $version
-	 * @param bool|string $src
-	 *
-	 * @return string
-	 */
-	public function addJs( $handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false ) {
-		$inFooter = false;
-		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
-			$position  = "wp_footer";
-			$inFooter = true;
-		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
-			 $position = "wp_head";
-		} elseif ($position == 'admin' || $position == 'admin_header'|| $position  ==  'admin_head'){
-			 $position = 'admin_enqueue_scripts';
-		} elseif ($position  ==  'login' || $position  == 'login-page'){
-			 $position = 'login_enqueue_scripts';
-     		 $this->loginPage = true;
-		}
+        return $fileID;
+    }
 
-		$handle = $this->registerJs( $handle, $position, $dep, $version, $src );
-		add_action( $position, function () use ( $inFooter, $handle, $src, $dep, $version ) {
-			wp_enqueue_script( $handle, $src, $dep, $version, $inFooter );
-		} );
+    /**
+     * @param string $handle
+     * @param string $position
+     * @param array $dep
+     * @param bool|string $version
+     * @param bool|string $src
+     *
+     * @return string
+     */
+    public function addJs($handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false)
+    {
+        $inFooter = false;
+        if ($position == "wp_footer" || $position == "footer" || $position == "body") {
+            $position = "wp_footer";
+            $inFooter = true;
+        } elseif ($position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head") {
+            $position = "wp_enqueue_scripts";
+        } elseif ($position == 'admin' || $position == 'admin_header' || $position == 'admin_head') {
+            $position = 'admin_enqueue_scripts';
+        } elseif ($position == 'login' || $position == 'login-page') {
+            $position = 'login_enqueue_scripts';
+            $this->loginPage = true;
+        }
 
-		return $handle;
-	}
+        $handle = $this->registerJs($handle, $position, $dep, $version, $src);
+        add_action($position, function () use ($inFooter, $handle, $src, $dep, $version) {
+            wp_enqueue_script($handle, $src, $dep, $version, $inFooter);
+        });
 
-	/**
-	 * @param string $handle
-	 * @param array $dep
-	 * @param bool|string $version
-	 * @param bool|string $src
-	 * @param string|string $media
-	 *
-	 * @return string
-	 */
-	public function registerCss( $handle, $dep = [], $version = false, $src = false, $media = 'all' ) {
-		if ( ! $src ) {
-			$src     = $this->pluginUrl( "{$this->cssPatch}{$this->baseName}-{$handle}.css" );
-			$fileID = $this->baseName . "-" . $handle;
-		} else {
-			$fileID = $handle;
-		}
-		if ( ! $version ) {
-			$version = $this->version;
-		}
+        return $handle;
+    }
 
-		$hook = "wp_enqueue_scripts";
+    /**
+     * @param string $handle
+     * @param array $dep
+     * @param bool|string $version
+     * @param bool|string $src
+     * @param string|string $media
+     *
+     * @return string
+     */
+    public function registerCss($handle, $dep = [], $version = false, $src = false, $media = 'all')
+    {
+        if (!$src) {
+            $src = $this->pluginUrl("{$this->cssPatch}{$this->baseName}-{$handle}.css");
+            $fileID = $this->baseName . "-" . $handle;
+        } else {
+            $fileID = $handle;
+        }
+        if (!$version) {
+            $version = $this->version;
+        }
 
-		if ( is_admin() ) {
-			$hook = "admin_enqueue_scripts";
-		}
+        $hook = "wp_enqueue_scripts";
 
-		if($this->loginPage){
-			$hook = 'login_enqueue_scripts';
-		}
+        if (is_admin()) {
+            $hook = "admin_enqueue_scripts";
+        }
 
-		add_action( $hook, function () use ( $media, $version, $dep, $src, $fileID ) {
-			wp_register_style(
-				$fileID,
-				$src,
-				$dep,
-				$version,
-				$media
-			);
-		}, 10 );
+        if ($this->loginPage) {
+            $hook = 'login_enqueue_scripts';
+        }
 
-		return $fileID;
-	}
+        add_action($hook, function () use ($media, $version, $dep, $src, $fileID) {
+            wp_register_style(
+                $fileID,
+                $src,
+                $dep,
+                $version,
+                $media
+            );
+        },9);
 
-	/**
-	 * @param string $handle
-	 * @param string $position
-	 * @param array $dep
-	 * @param bool|string $version
-	 * @param bool|string $src
-	 * @param string $media
-	 *
-	 * @return string
-	 */
-	public function addCss( $handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false, $media = 'all' ) {
-		if ( $position == "wp_footer" || $position == "footer" || $position == "body" ) {
-			$position = "wp_footer";
-		} elseif ( $position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head" ) {
-			 $position = "wp_enqueue_scripts";
-		} elseif ($position == 'admin' || $position == 'admin_header'|| $position == 'admin_head'){
-			 $position = 'admin_enqueue_scripts';
-		} elseif ($position == 'login' || $position == 'login-page'){
-			$position = 'login_enqueue_scripts';
-			$this->loginPage = true;
-		}
+        return $fileID;
+    }
 
-		$handle = $this->registerCss( $handle, $dep, $version, $src, $media );
-		add_action( $position, function () use (  $handle ) {
-			wp_enqueue_style( $handle );
-		});
+    /**
+     * @param string $handle
+     * @param string $position
+     * @param array $dep
+     * @param bool|string $version
+     * @param bool|string $src
+     * @param string $media
+     *
+     * @return string
+     */
+    public function addCss($handle, $position = "wp_enqueue_scripts", $dep = [], $version = false, $src = false, $media = 'all')
+    {
+        if ($position == "wp_footer" || $position == "footer" || $position == "body") {
+            $position = "wp_footer";
+        } elseif ($position == "wp_head" || $position == "wp_enqueue_script" || $position == "header" || $position == "head") {
+            $position = "wp_enqueue_scripts";
+        } elseif ($position == 'admin' || $position == 'admin_header' || $position == 'admin_head') {
+            $position = 'admin_enqueue_scripts';
+        } elseif ($position == 'login' || $position == 'login-page') {
+            $position = 'login_enqueue_scripts';
+            $this->loginPage = true;
+        }
 
-		return $handle;
-	}
+        $handle = $this->registerCss($handle, $dep, $version, $src, $media);
+        add_action($position, function () use ($handle) {
+            wp_enqueue_style($handle);
+        });
+
+        return $handle;
+    }
 
 }

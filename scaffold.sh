@@ -20,6 +20,8 @@ find . -type f -name '*-r' -delete
 
 rm -rf .git
 
+rm -rf .github
+
 mv -f $(pwd) "$(dirname "$(pwd)")/$1"
 
 rm -- "$0"

@@ -14,7 +14,7 @@ const pluginSrc = {
   ],
   css: [
     'public/css/*.less',
-    'public/css/vendor/**/*.less',
+    '!public/css/vendor/**/*.less',
   ],
   cssMaps: [
     'public/css/maps/*',
